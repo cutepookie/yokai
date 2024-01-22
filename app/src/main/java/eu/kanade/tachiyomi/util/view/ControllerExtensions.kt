@@ -57,9 +57,7 @@ import eu.kanade.tachiyomi.data.backup.BackupCreatorJob
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
 import eu.kanade.tachiyomi.databinding.MainActivityBinding
 import eu.kanade.tachiyomi.ui.base.SmallToolbarInterface
-import eu.kanade.tachiyomi.ui.base.controller.BaseComposeController
 import eu.kanade.tachiyomi.ui.base.controller.BaseController
-import eu.kanade.tachiyomi.ui.base.controller.BaseLegacyController
 import eu.kanade.tachiyomi.ui.base.controller.CrossFadeChangeHandler
 import eu.kanade.tachiyomi.ui.base.controller.DialogController
 import eu.kanade.tachiyomi.ui.base.controller.FadeChangeHandler
@@ -495,7 +493,7 @@ fun Controller.scrollViewWith(
 
     fun onScrolled(dy: Int) {
         if (isControllerVisible && statusBarHeight > -1 &&
-            (this@scrollViewWith as? BaseLegacyController<*>)?.isDragging != true &&
+            (this@scrollViewWith as? BaseController<*>)?.isDragging != true &&
             activity != null && (activityBinding?.appBar?.height ?: 0) > 0 &&
             recycler.translationY == 0f
         ) {
@@ -611,7 +609,7 @@ fun Controller.scrollViewWith(
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (newState == RecyclerView.SCROLL_STATE_IDLE &&
-                    (this@scrollViewWith as? BaseLegacyController<*>)?.isDragging != true
+                    (this@scrollViewWith as? BaseController<*>)?.isDragging != true
                 ) {
                     onScrollIdle()
                 } else if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
@@ -630,7 +628,7 @@ fun Controller.scrollViewWith(
     }
 
     (recycler as? StatefulNestedScrollView)?.setScrollStoppedListener {
-        if ((this@scrollViewWith as? BaseLegacyController<*>)?.isDragging != true) {
+        if ((this@scrollViewWith as? BaseController<*>)?.isDragging != true) {
             onScrollIdle()
         }
     }
@@ -700,7 +698,7 @@ fun Controller.setItemAnimatorForAppBar(recycler: RecyclerView) {
 }
 
 val Controller.mainRecyclerView: RecyclerView?
-    get() = (this as? SettingsController)?.listView ?: (this as? BaseLegacyController<*>)?.mainRecycler
+    get() = (this as? SettingsController)?.listView ?: (this as? BaseController<*>)?.mainRecycler
 
 fun Controller.moveRecyclerViewUp(allTheWayUp: Boolean = false, scrollUpAnyway: Boolean = false) {
     if (activityBinding?.bigToolbar?.isVisible == false) return
@@ -822,7 +820,7 @@ fun Controller.requestFilePermissionsSafe(
             }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
-    } else if ((Build.VERSION.SDK_INT < Build.VERSION_CODES.R || Environment.isExternalStorageManager()) && !preferences.backupInterval().isSet()) {
+    } else if ((Build.VERSION.SDK_INT < Build.VERSION_CODES.R || Environment.isExternalStorageManager()) && preferences.backupInterval().isNotSet()) {
         preferences.backupInterval().set(24)
         BackupCreatorJob.setupTask(activity, 24)
     }
@@ -849,12 +847,7 @@ fun Controller.withFadeInTransaction(): RouterTransaction {
         .popChangeHandler(OneWayFadeChangeHandler())
 }
 
-fun Controller.openInBrowser(url: String?) {
-    if (url == null) {
-        activity?.toast(R.string.open_in_browser_fail)
-        return
-    }
-
+fun Controller.openInBrowser(url: String) {
     try {
         val intent = Intent(Intent.ACTION_VIEW, url.toUri())
         startActivity(intent)
@@ -905,14 +898,11 @@ val Controller.previousController: Controller?
 @MainThread
 fun Router.canStillGoBack(): Boolean {
     if (backstack.size > 1) return true
-    (backstack.lastOrNull()?.controller as? BaseController)?.let { controller ->
+    (backstack.lastOrNull()?.controller as? BaseController<*>)?.let { controller ->
         return controller.canStillGoBack()
     }
     return false
 }
-
-val Router.isCompose: Boolean
-    get() = backstack.lastOrNull()?.controller is BaseComposeController
 
 interface BackHandlerControllerInterface {
     fun handleOnBackStarted(backEvent: BackEventCompat) {

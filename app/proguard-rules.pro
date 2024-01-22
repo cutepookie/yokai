@@ -3,7 +3,6 @@
 -keep class eu.kanade.tachiyomi.source.** { public protected *; } # Avoid access modification
 -keep,allowoptimization class eu.kanade.** { public protected *; }
 -keep,allowoptimization class tachiyomi.** { public protected *; }
--keep,allowoptimization class dev.yokai.** { public protected *; }
 
 # Keep common dependencies used in extensions
 -keep class androidx.preference.** { public protected *; }
@@ -66,14 +65,6 @@
     *** Companion;
 }
 -keepclasseswithmembers class kotlinx.serialization.json.** {
-    kotlinx.serialization.KSerializer serializer(...);
-}
-
--keep,includedescriptorclasses class dev.yokai.**$$serializer { *; }
--keepclassmembers class dev.yokai.** {
-    *** Companion;
-}
--keepclasseswithmembers class dev.yokai.** {
     kotlinx.serialization.KSerializer serializer(...);
 }
 

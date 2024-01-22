@@ -14,8 +14,12 @@
     <string name="show_number_of_items">საგნების რაოდენობის ჩვენება</string>
     <string name="date_added">დამატების თარიღი</string>
     <string name="global_search">გლობალური ძებნა…</string>
+    <string name="untrusted_extension_message">ეს დამატება ხელმოწერილია უცნობი სერთიფიკატის მიერ და არ არის აქტივირებული.
+\n
+\nმავნე დამატებას შეუძლია წაიკითხოს შესვლის მონაცემები შენახული ამ აპლიკაციაში ან გაუშვას თავისი კოდი.
+\n
+\nამ სერტიფიკატის ნდობით თქვენ თქვენს თავზე იღებთ რისკებს და პასუხისმგებლობას.</string>
     <string name="obsolete_extension_message">დამატება აღარ არის ხელმისაწვდომი.</string>
-    <string name="unofficial_extension_message">დამატება არ არის Tachiyomi-ს ოფიციალური დამატებების სიიდან.</string>
     <string name="nsfw_short">18+</string>
     <string name="may_contain_nsfw">შეიძლება შეიჩაცდეს უცენზურო(18+) კონტენტს</string>
     <plurals name="extension_updates_available">
@@ -23,7 +27,7 @@
         <item quantity="other">ხელმისაწვდომია %d გაფართოების განახლება</item>
     </plurals>
     <string name="vertical_viewer">ვერტიკალური</string>
-    <string name="long_strip_side_padding_0">არცერთი</string>
+    <string name="webtoon_side_padding_0">არცერთი</string>
     <string name="none">არცერთი</string>
     <string name="search_settings">პარამეტრების ძიება</string>
     <string name="updated_to_">განახლებულია v%1$s-მდე</string>
@@ -59,7 +63,7 @@
     <string name="set_as_cover">ყდად დაყენება</string>
     <string name="default_reading_mode">ნაგულისხმევი კითხვის რეჟიმი</string>
     <string name="left_to_right_viewer">მარცხნიდან მარჯვნივ</string>
-    <string name="long_strip_side_padding_20">20%</string>
+    <string name="webtoon_side_padding_20">20%</string>
     <string name="remove_from_library">ბიბლიოთეკიდან წაშლა</string>
     <string name="failed_to_update_cover">ვერ მოხერხდა ყდის განახლება</string>
     <string name="dropped">გადაგდებული</string>
@@ -96,13 +100,14 @@
     <string name="last_read">ბოლოს წაკითხული</string>
     <string name="badges">ნიშნაკები</string>
     <string name="reduces_banding_impacts_performance">აუმჯობესებს ხარისხს, თუმცა ამცირებს წარმადობას</string>
-    <string name="long_strip_side_padding_25">25%</string>
+    <string name="webtoon_side_padding_25">25%</string>
     <string name="tracking_info">ცალმხრივი სინქრონიზაცია თვალყურის სადევნებელ სერვისებში თავების პროგრესის განსაახლებლად. მიადევნე თვალყური ინდივიდუალურ მანგებს მათი ჩანართებიდან.</string>
     <string name="restore_backup">რეზერვის აღდგენა</string>
     <string name="restore_missing_sources">დაკარგული წყაროები:</string>
     <string name="username">მომხმარებლის სახელი</string>
     <string name="blue_initial">B</string>
     <string name="manga">მანგა</string>
+    <string name="webtoon">ვებ კომიქსი</string>
     <string name="title">სათაური</string>
     <string name="author">ავტორი</string>
     <string name="description">აღწერა</string>
@@ -161,7 +166,6 @@
     <string name="untrusted">არასანდო</string>
     <string name="uninstall">წაშლა</string>
     <string name="untrusted_extension">არასანდო დამატება</string>
-    <string name="unofficial">არაოფიციცალური</string>
     <string name="use_image_as_cover">გამოვიყენოთ ეს სურათი ყდის ნახატად\?</string>
     <string name="current_chapter">მიმდინარე:</string>
     <string name="next_title">შემდეგი:</string>
@@ -171,8 +175,8 @@
     <string name="previous_chapter">წინა თავი</string>
     <string name="show_page_number">გვერდის ნომრის ჩვენება</string>
     <string name="double_tap_anim_speed">ორჯერ დაჭერისას ანიმაციის სისწრაფე</string>
-    <string name="long_strip_side_padding_10">10%</string>
-    <string name="long_strip_side_padding_15">15%</string>
+    <string name="webtoon_side_padding_10">10%</string>
+    <string name="webtoon_side_padding_15">15%</string>
     <string name="added_to_library">დამატებულია ბიბლიოთეკაში</string>
     <string name="add_tracking">თვალი ადევნე</string>
     <string name="downloads">გადმოწერები</string>
@@ -328,7 +332,7 @@
     <string name="search">ძებნა</string>
     <string name="alpha_initial">A</string>
     <string name="always_show_chapter_transition">ყოველთვის აჩვენე თავებს შორის გადასვლა</string>
-    <string name="pref_long_strip_side_padding">ცარიელი არეა გვერდებზე</string>
+    <string name="pref_webtoon_side_padding">ცარიელი არეა გვერდებზე</string>
     <string name="settings">პარამეტრები</string>
     <string name="general">ზოგადი</string>
     <string name="advanced">დამატებით</string>
@@ -348,4 +352,6 @@
     <string name="gray_background">ნაცრისფერი</string>
     <string name="library_entries">ბიბლიოთეკის ჩანაწერები</string>
     <string name="clear_database_summary">ისტორიიდან წაიშლება ჩანაწერები, რომლებიც თქვენს ბიბლიოთეკაში არაა შენახული</string>
+    <string name="grid_size">ნივთები რიგში</string>
+    <string name="trackers">სერვისები</string>
 </resources>

@@ -4,7 +4,7 @@
     <string name="manga">Manga</string>
     <string name="external_storage_permission_notice">TachiyomiJ2K mbutuhake akses menyang kabeh file ing Android 11 kanggo ndownload bab, nggawe serep otomatis, lan maca manga lokal.
 \n
-\n Ing layar sabanjure, aktifake \"Allow akses kanggo ngatur kabeh file.\"</string>
+\nIng layar sabanjure, aktifake \"Allow akses kanggo ngatur kabeh file.\"</string>
     <string name="external_storage_download_notice">TachiyomiJ2K mbutuhake akses menyang kabeh file kanggo ngundhuh bab. Tutul ing kene, banjur aktifake \"Allow akses kanggo ngatur kabeh file.\"</string>
     <string name="manhwa">Manhwa</string>
     <string name="title">Judhul</string>
@@ -14,7 +14,6 @@
     <string name="other">Liyane</string>
     <string name="label_global_search">Penggolekan global</string>
     <string name="untrusted_extension">Ekstensi ora kapracaya</string>
-    <string name="unofficial_extension_message">Ekstensi iki ora saka dhaptar ekstensi Tachiyomi resmi.</string>
     <string name="tracking">Ngelacak</string>
     <string name="type">Jinis</string>
     <string name="migrate">Pindah</string>
@@ -76,9 +75,13 @@
     <string name="uninstall">Ucul</string>
     <string name="ext_installer_shizuku_stopped">Shizuku ora lumaku</string>
     <string name="ext_installer_shizuku_unavailable_dialog">Pasang lan wiwit Shizuku kanggo migunakake Shizuku dadi pemasang ekstensi.</string>
+    <string name="untrusted_extension_message">Ekstensi iki ditandatangani nganggo sertifikat sing ora dipercaya lan ora diaktifake.
+\n
+\n Ekstensi angkoro bisa maca kredensial login sing disimpen ing Tachiyomi utawa nglakokake kode sewenang-wenang.
+\n
+\n Kanthi percaya karo sertifikat iki, sampeyan nampa risiko kasebut.</string>
     <string name="nsfw_short">18+</string>
     <string name="app_info">Infone aplikasi</string>
-    <string name="unofficial">Ora resmi</string>
     <string name="update_all">Nganyari kabeh</string>
     <string name="next_chapter">Bab sabanjure</string>
     <string name="previous_chapter">Bab sadurunge</string>
@@ -114,12 +117,12 @@
     <string name="green_initial">I</string>
     <string name="blue_initial">B</string>
     <string name="alpha_initial">T</string>
-    <string name="long_strip_side_padding_0">Ora</string>
-    <string name="long_strip_side_padding_5">5%</string>
-    <string name="long_strip_side_padding_10">10%</string>
-    <string name="long_strip_side_padding_15">15%</string>
-    <string name="long_strip_side_padding_20">20%</string>
-    <string name="long_strip_side_padding_25">25%</string>
+    <string name="webtoon_side_padding_0">Ora</string>
+    <string name="webtoon_side_padding_5">5%</string>
+    <string name="webtoon_side_padding_10">10%</string>
+    <string name="webtoon_side_padding_15">15%</string>
+    <string name="webtoon_side_padding_20">20%</string>
+    <string name="webtoon_side_padding_25">25%</string>
     <string name="l_nav">Wangun L</string>
     <string name="kindlish_nav">Kaya Kindle</string>
     <string name="edge_nav">Tepi</string>
@@ -220,4 +223,11 @@
     <string name="warning">Awas</string>
     <string name="ext_installer_pref">Pemasang</string>
     <string name="library_entries">Entri perpustakaan</string>
+    <string name="in_progress">Otw</string>
+    <string name="description">Deskripsi</string>
+    <string name="not_started">Gorong dimulai</string>
+    <string name="read">Moco</string>
+    <string name="manhua">Manhua</string>
+    <string name="local_source">Lokal manga</string>
+    <string name="grid_size">Item saben baris</string>
 </resources>

@@ -16,7 +16,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceScreen
 import com.google.firebase.crashlytics.ktx.crashlytics
 import com.google.firebase.ktx.Firebase
-import dev.yokai.domain.extension.TrustExtension
 import eu.kanade.tachiyomi.BuildConfig
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.cache.ChapterCache
@@ -27,9 +26,10 @@ import eu.kanade.tachiyomi.data.download.DownloadProvider
 import eu.kanade.tachiyomi.data.library.LibraryUpdateJob
 import eu.kanade.tachiyomi.data.library.LibraryUpdateJob.Target
 import eu.kanade.tachiyomi.data.preference.PreferenceKeys
-import eu.kanade.tachiyomi.data.preference.changesIn
+import eu.kanade.tachiyomi.data.preference.asImmediateFlowIn
 import eu.kanade.tachiyomi.extension.ShizukuInstaller
 import eu.kanade.tachiyomi.extension.util.ExtensionInstaller
+import eu.kanade.tachiyomi.extension.util.TrustExtension
 import eu.kanade.tachiyomi.network.NetworkHelper
 import eu.kanade.tachiyomi.network.PREF_DOH_360
 import eu.kanade.tachiyomi.network.PREF_DOH_ADGUARD
@@ -79,7 +79,7 @@ class SettingsAdvancedController : SettingsController() {
 
     private val downloadManager: DownloadManager by injectLazy()
 
-    private val trustExtension: TrustExtension by injectLazy()
+    val trustExtension: TrustExtension by injectLazy()
 
     private val isUpdaterEnabled = BuildConfig.INCLUDE_UPDATER
 
@@ -367,13 +367,13 @@ class SettingsAdvancedController : SettingsController() {
                 }
             }
             infoPreference(R.string.ext_installer_summary).apply {
-                preferences.extensionInstaller().changesIn(viewScope) {
+                preferences.extensionInstaller().asImmediateFlowIn(viewScope) {
                     isVisible =
                         it != ExtensionInstaller.PACKAGE_INSTALLER && Build.VERSION.SDK_INT < Build.VERSION_CODES.S
                 }
             }
             preference {
-                titleRes = R.string.action_revoke_all_extensions
+                titleRes = R.string.ext_revoke_trust
 
                 onClick {
                     trustExtension.revokeAll()

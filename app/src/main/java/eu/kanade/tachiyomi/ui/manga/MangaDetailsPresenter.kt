@@ -345,7 +345,7 @@ class MangaDetailsPresenter(
             var chapterError: java.lang.Exception? = null
             val chapters = async(Dispatchers.IO) {
                 try {
-                    source.getChapterList(manga.copy())
+                    source.getChapterList(manga)
                 } catch (e: Exception) {
                     chapterError = e
                     emptyList()

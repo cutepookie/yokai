@@ -37,6 +37,7 @@ import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.activity.BackEventCompat
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.activity.viewModels
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
@@ -75,8 +76,8 @@ import eu.kanade.tachiyomi.BuildConfig
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.database.models.Chapter
 import eu.kanade.tachiyomi.data.database.models.Manga
-import eu.kanade.tachiyomi.core.preference.toggle
-import eu.kanade.tachiyomi.data.preference.changesIn
+import eu.kanade.tachiyomi.data.preference.asImmediateFlowIn
+import eu.kanade.tachiyomi.data.preference.toggle
 import eu.kanade.tachiyomi.data.track.TrackService
 import eu.kanade.tachiyomi.databinding.ReaderActivityBinding
 import eu.kanade.tachiyomi.source.model.Page
@@ -370,7 +371,7 @@ class ReaderActivity : BaseActivity<ReaderActivityBinding>() {
         initializeMenu()
 
         preferences.incognitoMode()
-            .changesIn(lifecycleScope) {
+            .asImmediateFlowIn(lifecycleScope) {
                 SecureActivityDelegate.setSecure(this)
             }
         reEnableBackPressedCallBack()
@@ -523,7 +524,7 @@ class ReaderActivity : BaseActivity<ReaderActivityBinding>() {
     }
 
     private fun canShowSplitAtBottom(): Boolean {
-        return if (!preferences.readerBottomButtons().isSet()) {
+        return if (preferences.readerBottomButtons().isNotSet()) {
             isTablet()
         } else {
             ReaderBottomButton.ShiftDoublePage.isIn(preferences.readerBottomButtons().get())
@@ -841,7 +842,7 @@ class ReaderActivity : BaseActivity<ReaderActivityBinding>() {
 
         listOf(preferences.cropBorders(), preferences.cropBordersWebtoon())
             .forEach { pref ->
-                pref.changes()
+                pref.asFlow()
                     .onEach { updateCropBordersShortcut() }
                     .launchIn(scope)
             }
@@ -1200,7 +1201,7 @@ class ReaderActivity : BaseActivity<ReaderActivityBinding>() {
         val newViewer = when (mangaViewer) {
             ReadingModeType.LEFT_TO_RIGHT.flagValue -> L2RPagerViewer(this)
             ReadingModeType.VERTICAL.flagValue -> VerticalPagerViewer(this)
-            ReadingModeType.LONG_STRIP.flagValue -> WebtoonViewer(this)
+            ReadingModeType.WEBTOON.flagValue -> WebtoonViewer(this)
             ReadingModeType.CONTINUOUS_VERTICAL.flagValue -> WebtoonViewer(this, hasMargins = true)
             else -> R2LPagerViewer(this)
         }
@@ -1215,7 +1216,7 @@ class ReaderActivity : BaseActivity<ReaderActivityBinding>() {
                         when (mangaViewer) {
                             ReadingModeType.RIGHT_TO_LEFT.flagValue -> R.string.right_to_left_viewer
                             ReadingModeType.VERTICAL.flagValue -> R.string.vertical_viewer
-                            ReadingModeType.LONG_STRIP.flagValue -> R.string.long_strip
+                            ReadingModeType.WEBTOON.flagValue -> R.string.webtoon_style
                             else -> R.string.left_to_right_viewer
                         },
                     ).lowercase(Locale.getDefault()),
@@ -1898,7 +1899,7 @@ class ReaderActivity : BaseActivity<ReaderActivityBinding>() {
          * Initializes the reader subscriptions.
          */
         init {
-            preferences.defaultOrientationType().changes()
+            preferences.defaultOrientationType().asFlow()
                 .drop(1)
                 .onEach {
                     delay(250)
@@ -1906,38 +1907,38 @@ class ReaderActivity : BaseActivity<ReaderActivityBinding>() {
                 }
                 .launchIn(scope)
 
-            preferences.showPageNumber().changesIn(scope) { setPageNumberVisibility(it) }
+            preferences.showPageNumber().asImmediateFlowIn(scope) { setPageNumberVisibility(it) }
 
-            preferences.landscapeCutoutBehavior().changes()
+            preferences.landscapeCutoutBehavior().asFlow()
                 .drop(1)
                 .onEach { setCutoutMode() }
                 .launchIn(scope)
 
-            preferences.trueColor().changesIn(scope) { setTrueColor(it) }
+            preferences.trueColor().asImmediateFlowIn(scope) { setTrueColor(it) }
 
-            preferences.fullscreen().changesIn(scope) { setFullscreen(it) }
+            preferences.fullscreen().asImmediateFlowIn(scope) { setFullscreen(it) }
 
-            preferences.keepScreenOn().changesIn(scope) { setKeepScreenOn(it) }
+            preferences.keepScreenOn().asImmediateFlowIn(scope) { setKeepScreenOn(it) }
 
-            preferences.customBrightness().changesIn(scope) { setCustomBrightness(it) }
+            preferences.customBrightness().asImmediateFlowIn(scope) { setCustomBrightness(it) }
 
-            preferences.colorFilter().changesIn(scope) { setColorFilter(it) }
+            preferences.colorFilter().asImmediateFlowIn(scope) { setColorFilter(it) }
 
-            preferences.colorFilterMode().changesIn(scope) {
+            preferences.colorFilterMode().asImmediateFlowIn(scope) {
                 setColorFilter(preferences.colorFilter().get())
             }
 
-            merge(preferences.grayscale().changes(), preferences.invertedColors().changes())
+            merge(preferences.grayscale().asFlow(), preferences.invertedColors().asFlow())
                 .onEach { setLayerPaint(preferences.grayscale().get(), preferences.invertedColors().get()) }
                 .launchIn(lifecycleScope)
 
-            preferences.alwaysShowChapterTransition().changesIn(scope) {
+            preferences.alwaysShowChapterTransition().asImmediateFlowIn(scope) {
                 showNewChapter = it
             }
 
-            preferences.pageLayout().changesIn(scope) { setBottomNavButtons(it) }
+            preferences.pageLayout().asImmediateFlowIn(scope) { setBottomNavButtons(it) }
 
-            preferences.automaticSplitsPage().changes()
+            preferences.automaticSplitsPage().asFlow()
                 .drop(1)
                 .onEach {
                     val isPaused = !this@ReaderActivity.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)
@@ -1949,7 +1950,7 @@ class ReaderActivity : BaseActivity<ReaderActivityBinding>() {
                 }
                 .launchIn(scope)
 
-            preferences.readerBottomButtons().changesIn(scope) { updateBottomShortcuts() }
+            preferences.readerBottomButtons().asImmediateFlowIn(scope) { updateBottomShortcuts() }
         }
 
         /**
@@ -1995,7 +1996,7 @@ class ReaderActivity : BaseActivity<ReaderActivityBinding>() {
          */
         private fun setCustomBrightness(enabled: Boolean) {
             if (enabled) {
-                preferences.customBrightnessValue().changes()
+                preferences.customBrightnessValue().asFlow()
                     .sample(100)
                     .onEach { setCustomBrightnessValue(it) }
                     .launchIn(scope)
@@ -2009,7 +2010,7 @@ class ReaderActivity : BaseActivity<ReaderActivityBinding>() {
          */
         private fun setColorFilter(enabled: Boolean) {
             if (enabled) {
-                preferences.colorFilterValue().changes()
+                preferences.colorFilterValue().asFlow()
                     .sample(100)
                     .onEach { setColorFilterValue(it) }
                     .launchIn(scope)

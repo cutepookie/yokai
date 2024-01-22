@@ -417,7 +417,6 @@ class ExtensionBottomSheet @JvmOverloads constructor(context: Context, attrs: At
     private fun trustExtension(pkgName: String, versionCode: Long, signatureHash: String) {
         presenter.trustExtension(pkgName, versionCode, signatureHash)
     }
-
     private fun uninstallExtension(pkgName: String) {
         presenter.uninstallExtension(pkgName)
     }

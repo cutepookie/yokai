@@ -92,7 +92,7 @@ class PagerConfig(
                 },
             )
 
-        preferences.pagerNavInverted().changes()
+        preferences.pagerNavInverted().asFlow()
             .drop(1)
             .onEach {
                 navigationModeInvertedListener?.invoke()
@@ -121,7 +121,7 @@ class PagerConfig(
             .register({ invertDoublePages = it }, { imagePropertyChangedListener?.invoke() })
 
         preferences.pageLayout()
-            .changes()
+            .asFlow()
             .drop(1)
             .onEach {
                 autoDoublePages = it == PageLayout.AUTOMATIC.value

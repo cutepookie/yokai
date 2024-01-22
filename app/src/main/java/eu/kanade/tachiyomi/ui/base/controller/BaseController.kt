@@ -3,20 +3,25 @@ package eu.kanade.tachiyomi.ui.base.controller
 import android.app.Activity
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.forEach
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewbinding.ViewBinding
 import com.bluelinelabs.conductor.Controller
 import com.bluelinelabs.conductor.ControllerChangeHandler
 import com.bluelinelabs.conductor.ControllerChangeType
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.ui.main.MainActivity
+import eu.kanade.tachiyomi.util.system.getResourceColor
 import eu.kanade.tachiyomi.util.view.BackHandlerControllerInterface
 import eu.kanade.tachiyomi.util.view.activityBinding
+import eu.kanade.tachiyomi.util.view.backgroundColor
 import eu.kanade.tachiyomi.util.view.isControllerVisible
 import eu.kanade.tachiyomi.util.view.removeQueryListener
 import kotlinx.coroutines.CoroutineScope
@@ -24,12 +29,14 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import timber.log.Timber
 
-abstract class BaseController(bundle: Bundle? = null) :
+abstract class BaseController<VB : ViewBinding>(bundle: Bundle? = null) :
     Controller(bundle), BackHandlerControllerInterface {
 
+    lateinit var binding: VB
     lateinit var viewScope: CoroutineScope
     var isDragging = false
 
+    val isBindingInitialized get() = this::binding.isInitialized
     init {
         addLifecycleListener(
             object : LifecycleListener() {
@@ -58,16 +65,38 @@ abstract class BaseController(bundle: Bundle? = null) :
         )
     }
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedViewState: Bundle?): View {
+        binding = createBinding(inflater)
+        binding.root.backgroundColor = binding.root.context.getResourceColor(R.attr.background)
+        return binding.root
+    }
+
+    abstract fun createBinding(inflater: LayoutInflater): VB
+
     open fun onViewCreated(view: View) { }
 
     override fun onChangeStarted(handler: ControllerChangeHandler, type: ControllerChangeType) {
-        if (type.isEnter && !isControllerVisible) {
+        if (type.isEnter && isControllerVisible) {
+            setTitle()
+        } else if (type.isEnter) {
             view?.alpha = 0f
         } else {
             removeQueryListener()
         }
         setHasOptionsMenu(type.isEnter && isControllerVisible)
         super.onChangeStarted(handler, type)
+    }
+
+    open fun getTitle(): String? {
+        return null
+    }
+
+    open fun getSearchTitle(): String? {
+        return null
+    }
+
+    open fun getBigIcon(): Drawable? {
+        return null
     }
 
     open fun canStillGoBack(): Boolean { return false }
@@ -78,6 +107,28 @@ abstract class BaseController(bundle: Bundle? = null) :
     override fun onActivityPaused(activity: Activity) {
         super.onActivityPaused(activity)
         removeQueryListener(false)
+    }
+
+    fun setTitle() {
+        var parentController = parentController
+        while (parentController != null) {
+            if (parentController is BaseController<*> && parentController.getTitle() != null) {
+                return
+            }
+            parentController = parentController.parentController
+        }
+
+        if (isControllerVisible) {
+            (activity as? AppCompatActivity)?.title = getTitle()
+            (activity as? MainActivity)?.searchTitle = getSearchTitle()
+            val icon = getBigIcon()
+            activityBinding?.bigIconLayout?.isVisible = icon != null
+            if (icon != null) {
+                activityBinding?.bigIcon?.setImageDrawable(getBigIcon())
+            } else {
+                activityBinding?.bigIcon?.setImageDrawable(getBigIcon())
+            }
+        }
     }
 
     private fun Controller.instance(): String {

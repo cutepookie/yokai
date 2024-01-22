@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="manga">Manga</string>
+    <string name="webtoon">Digitalni strip</string>
     <string name="title">Naslov</string>
     <string name="author">Autor</string>
     <string name="description">Opis</string>
@@ -84,6 +85,11 @@
     <string name="untrusted">Nepovjerljivo</string>
     <string name="uninstall">Deinstaliraj</string>
     <string name="untrusted_extension">Nepovjerljivo proširenje</string>
+    <string name="untrusted_extension_message">Ovo proširenje potpisano je nepovjerljivim certifikatom i nije aktivirano.
+\n
+\nZlonamjerno proširenje može pročitati sve podatke za prijavu koji su spremljeni u programu Tachiyomi ili izvršiti proizvoljni kod.
+\n
+\nVjerujući ovom certifikatu, prihvaćaš te rizike.</string>
     <string name="obsolete_extension_message">Ovo proširenje više nije dostupno.</string>
     <string name="version_">Verzija: %1$s</string>
     <string name="language_">Jezik: %1$s</string>
@@ -141,12 +147,12 @@
     <string name="blue_initial">B</string>
     <string name="alpha_initial">A</string>
     <string name="always_show_chapter_transition">Uvijek prikaži prijelaze između poglavlja</string>
-    <string name="pref_long_strip_side_padding">Odmak od ruba</string>
-    <string name="long_strip_side_padding_0">Bez</string>
-    <string name="long_strip_side_padding_10">10 %</string>
-    <string name="long_strip_side_padding_15">15 %</string>
-    <string name="long_strip_side_padding_20">20 %</string>
-    <string name="long_strip_side_padding_25">25 %</string>
+    <string name="pref_webtoon_side_padding">Odmak od ruba</string>
+    <string name="webtoon_side_padding_0">Bez</string>
+    <string name="webtoon_side_padding_10">10 %</string>
+    <string name="webtoon_side_padding_15">15 %</string>
+    <string name="webtoon_side_padding_20">20 %</string>
+    <string name="webtoon_side_padding_25">25 %</string>
     <string name="chapters_">Poglavlja %1$s</string>
     <string name="added_to_library">Dodano u biblioteku</string>
     <string name="removed_from_library">Uklonjeno iz biblioteke</string>
@@ -419,6 +425,7 @@
     <string name="use_custom_color_filter">Koristi prilagođeni filtar boja</string>
     <string name="use_custom_brightness">Koristi prilagođenu svjetlinu</string>
     <string name="enable_zoom_out">Aktiviraj zumiranje</string>
+    <string name="webtoon_style">Stil digitalnog stripa</string>
     <string name="reading_">Čita se %1$s</string>
     <string name="decode_image_error">Nije bilo moguće učitati sliku</string>
     <string name="page_">Stranica %1$d</string>
@@ -483,9 +490,7 @@
     <string name="custom_range">Prilagođeni raspon</string>
     <string name="search_chapters">Traži poglavlja</string>
     <string name="badges">Značke</string>
-    <string name="unofficial_extension_message">Ovo proširenje nije sa službenog popisa Tachiyomi proširenja.</string>
     <string name="nsfw_short">18+</string>
-    <string name="unofficial">Neslužbeno</string>
     <string name="may_contain_nsfw">Može sadržavati neprikladan sadržaj (18+)</string>
     <string name="finished_chapter">Završeno:</string>
     <string name="current_chapter">Trenutačno:</string>
@@ -746,6 +751,7 @@
     <string name="turn_off_">Isključi %s</string>
     <string name="turn_on_">Uključi %s</string>
     <string name="remove_crop">Ukloni odrezivanje</string>
+    <string name="crop_borders_webtoon">Odreži rubove (digitalni strip)</string>
     <string name="crop_borders_paged">Odreži rubove (stranice)</string>
     <string name="invert_double_pages">Invertiraj duplerice</string>
     <string name="save_combined_pages">Spremi spojene stranice</string>
@@ -868,7 +874,7 @@
     <string name="extension_updates_pending">Aktualiziranja proširenja na čekanju</string>
     <string name="affects_library_grid">Utječe na raspored naslovnica knjižnice</string>
     <string name="restrictions_">Restrikcije: %1$s</string>
-    <string name="getting_started_guide">Početni vodič</string>
+    <string name="getting_started_guide">Vodič za pokretanje</string>
     <string name="no_matches_for_filters_short">Nema podudaranja za vaše filtre</string>
     <string name="show_categories_while_filtering">Prikaži prazne kategorije tijekom filtritanja</string>
     <string name="recently_installed">Nedavno instalirano</string>
@@ -1008,7 +1014,7 @@
     <string name="most_entries">Najveći broj unosa</string>
     <string name="select_uninstalled_sources">Odaberi deinstalirane izvore</string>
     <string name="open_in_app">Otvori u programu</string>
-    <string name="long_strip_side_padding_5">5 %</string>
+    <string name="webtoon_side_padding_5">5 %</string>
     <string name="language_requires_app_restart">Neki jezici mogu zahtijevati ponovno pokretanje aplikacije za ispravan prikaz</string>
     <string name="loader_rar5_error">RARv5 format nije podržan</string>
     <string name="all_read_manga">Sve pročitane serije</string>
@@ -1086,6 +1092,9 @@
     <string name="library_entries">Unosi u biblioteci</string>
     <string name="source_settings">Postavke izvora</string>
     <string name="app_settings">Postavke aplikacije</string>
-    <string name="pref_debug_info">Informacije otklanjanja grešaka</string>
+    <string name="pref_debug_info">Informacije o otklanjanju grešaka</string>
     <string name="label_background_activity">Aktivnost u pozadini</string>
+    <string name="share_cover">Dijeli naslovnicu</string>
+    <string name="save_pages_separately">Spremi stranice u zasebne mape</string>
+    <string name="create_folders_by_manga_title">Stvara mape na osnovi naslova mange</string>
 </resources>

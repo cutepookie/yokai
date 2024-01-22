@@ -73,6 +73,7 @@
     <string name="manhwa">Manhwa</string>
     <string name="manhua">Manhua</string>
     <string name="comic">Komikia</string>
+    <string name="webtoon">Webtoon</string>
     <string name="not_started">Hasi gabea</string>
     <string name="in_progress">Lantzen</string>
     <string name="read">Irakurria</string>
@@ -227,14 +228,14 @@
     <string name="cutout_area_behavior">Eremu ebakiaren jokaera</string>
     <string name="kindlish_nav">Kindle erakoa</string>
     <string name="none">Ezer ez</string>
-    <string name="long_strip_side_padding_20">%20</string>
+    <string name="webtoon_side_padding_20">%20</string>
     <string name="horizontally">Horizontalki</string>
     <string name="vertically">Bertikalki</string>
     <string name="both_axes">Bi Ardatzak</string>
-    <string name="long_strip_side_padding_25">%25</string>
-    <string name="long_strip_side_padding_0">Ezer ez</string>
-    <string name="long_strip_side_padding_10">%10</string>
-    <string name="long_strip_side_padding_15">%15</string>
+    <string name="webtoon_side_padding_25">%25</string>
+    <string name="webtoon_side_padding_0">Ezer ez</string>
+    <string name="webtoon_side_padding_10">%10</string>
+    <string name="webtoon_side_padding_15">%15</string>
     <string name="filter_languages">Iragazi hizkuntzak</string>
     <string name="extension_updates_pending">Luzapenen eguneraketak geratzen dira</string>
     <string name="double_pages">Orrialde bikoitzak</string>
@@ -380,6 +381,11 @@
     <string name="only_enable_pinned_for_migration">Gaitu ainguratutako iturriak migratzeko bakarrik</string>
     <string name="only_enable_enabled_for_migration">Baimendu une honetan gaituak dauden iturriak bakarrik migraziorako</string>
     <string name="does_not_prevent_unofficial_nsfw">Honek ez du eragozten ofizialak ez diren edo oker markatutako luzapenek NSFW (18+) edukia aplikazioan erakustea.</string>
+    <string name="untrusted_extension_message">Luzapen hau fidagarria ez den ziurtagiri batekin sinatu zen eta ez zen aktibatu.
+\n
+\nLuzapen maltzur batek Tachiyomi-n gordetako saio-hasierako kredentzialak irakur ditzake edo kode arbitrarioa exekutatu.
+\n
+\nZiurtagiri honetaz fidatzean, arrisku hauek onartzen dituzu.</string>
     <plurals name="pages_plural">
         <item quantity="one">%1$d orrialdea</item>
         <item quantity="other">%1$d orrialdeak</item>
@@ -652,7 +658,7 @@
     <string name="next_chapter_not_found">Ez da hurrengo kapitulua aurkitu</string>
     <string name="use_custom_brightness">Erabili distira pertsonalizatua</string>
     <string name="use_custom_color_filter">Erabili kolore-iragazki pertsonalizatua</string>
-    <string name="pref_long_strip_side_padding">Alboko betegarria</string>
+    <string name="pref_webtoon_side_padding">Alboko betegarria</string>
     <string name="added_to_library">Liburutegira gehitua</string>
     <string name="search_chapters">Bilatu kapituluak</string>
     <string name="custom_range">Tarte pertsonalizatua</string>
@@ -681,7 +687,6 @@
     </plurals>
     <string name="ext_installer_shizuku_stopped">Shizuku ez dago martxan</string>
     <string name="obsolete_extension_message">Luzapen hau jada ez dago eskuragarri.</string>
-    <string name="unofficial_extension_message">Luzapen hau ez da Tachiyomi-ren luzapenen zerrenda ofizialekoa.</string>
     <string name="version_">Bertsioa: %1$s</string>
     <string name="language_">Hizkuntza: %1$s</string>
     <string name="app_info">Aplikazioaren informazioa</string>
@@ -697,7 +702,6 @@
     <string name="set_as_cover">Ezarri azal gisa</string>
     <string name="reader_settings">Irakurgailuaren ezarpenak</string>
     <string name="set_as_default_for_all">Ezarri lehenetsia bezala denarentzat</string>
-    <string name="unofficial">Ez-ofiziala</string>
     <string name="extensions_miui_warning">MIUI Optimizazioa desgaitu egin behar da luzapenak instalatzeko.</string>
     <string name="cover_updated">Azala eguneratu da</string>
     <string name="_must_be_enabled_first">Lehenik %1$s gaitu behar da</string>
@@ -720,9 +724,11 @@
     <string name="double_tap_anim_speed">Sakaketa bikoitzaren animazioaren abiadura</string>
     <string name="show_page_number">Erakutsi orrialdearen zenbakia</string>
     <string name="true_32bit_color">32 bit-eko kolorea</string>
+    <string name="webtoon_style">Webtoon estiloa</string>
     <string name="overlay">Gainjarri</string>
     <string name="remove_crop">Kendu mozketa</string>
     <string name="dodge_lighten">Sahiestu / Argitu</string>
+    <string name="crop_borders_webtoon">Moztu ertzak (Webtoon)</string>
     <string name="color_filter_blend_mode">Kolore-iragazkia modu nahastuan</string>
     <string name="skip_read_chapters">Saltatu irakurriak bezala markatutako kapituluak</string>
     <string name="skip_filtered_chapters">Saltatu iragazitako kapituluak</string>
@@ -828,7 +834,7 @@
     </plurals>
     <string name="network">Sarea</string>
     <string name="doh">DNS HTTPS bidez</string>
-    <string name="clear_database_summary">Ezabatu zure liburutegian ez dauden manga eta kapituluak</string>
+    <string name="clear_database_summary">Ezabatu zure liburutegian gordeta ez dauden mangen historia</string>
     <string name="refresh_library_metadata">Freskatu liburutegiko metadatuak</string>
     <string name="clean_up_downloaded_chapters">Garbitu deskargatutako kapituluak</string>
     <string name="delete_unused_chapters">Ezabatu ez dauden, partzialki deskargatutako eta irakurritako kapituluen karpetak</string>
@@ -928,7 +934,7 @@
     <string name="pref_high">Altua</string>
     <string name="pref_low">Baxua</string>
     <string name="pref_lowest">Baxuena</string>
-    <string name="long_strip_side_padding_5">%5</string>
+    <string name="webtoon_side_padding_5">%5</string>
     <string name="downloaded_chapters">Deskargatutako kapituluak</string>
     <string name="tap_zones">Nabigazio-diseinua</string>
     <string name="pref_update_only_non_completed">Argitalpen bukatua al da</string>
@@ -942,4 +948,7 @@
     <string name="pref_remove_exclude_categories">Baztertutako kategoriak</string>
     <string name="ext_installer_pref">Instalatzailea</string>
     <string name="label_background_activity">Atzeko planoko ekintzak</string>
+    <string name="library_entries">Manga</string>
+    <string name="trackers">Zerbitzuak</string>
+    <string name="apply">Ezarri</string>
 </resources>

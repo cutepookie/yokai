@@ -70,7 +70,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 import com.google.common.primitives.Floats.max
 import com.google.common.primitives.Ints.max
-import dev.yokai.presentation.extension.repo.ExtensionRepoController
 import eu.kanade.tachiyomi.BuildConfig
 import eu.kanade.tachiyomi.Migrations
 import eu.kanade.tachiyomi.R
@@ -79,7 +78,7 @@ import eu.kanade.tachiyomi.data.download.DownloadManager
 import eu.kanade.tachiyomi.data.library.LibraryUpdateJob
 import eu.kanade.tachiyomi.data.notification.NotificationReceiver
 import eu.kanade.tachiyomi.data.notification.Notifications
-import eu.kanade.tachiyomi.data.preference.changesIn
+import eu.kanade.tachiyomi.data.preference.asImmediateFlowIn
 import eu.kanade.tachiyomi.data.updater.AppUpdateChecker
 import eu.kanade.tachiyomi.data.updater.AppUpdateNotifier
 import eu.kanade.tachiyomi.data.updater.AppUpdateResult
@@ -91,7 +90,7 @@ import eu.kanade.tachiyomi.source.online.HttpSource
 import eu.kanade.tachiyomi.ui.base.MaterialMenuSheet
 import eu.kanade.tachiyomi.ui.base.SmallToolbarInterface
 import eu.kanade.tachiyomi.ui.base.activity.BaseActivity
-import eu.kanade.tachiyomi.ui.base.controller.BaseLegacyController
+import eu.kanade.tachiyomi.ui.base.controller.BaseController
 import eu.kanade.tachiyomi.ui.base.controller.DialogController
 import eu.kanade.tachiyomi.ui.library.LibraryController
 import eu.kanade.tachiyomi.ui.manga.MangaDetailsController
@@ -105,6 +104,7 @@ import eu.kanade.tachiyomi.ui.setting.SettingsController
 import eu.kanade.tachiyomi.ui.setting.SettingsMainController
 import eu.kanade.tachiyomi.ui.source.BrowseController
 import eu.kanade.tachiyomi.ui.source.browse.BrowseSourceController
+import eu.kanade.tachiyomi.ui.source.browse.repos.RepoController
 import eu.kanade.tachiyomi.util.manga.MangaCoverMetadata
 import eu.kanade.tachiyomi.util.manga.MangaShortcutManager
 import eu.kanade.tachiyomi.util.system.contextCompatDrawable
@@ -127,7 +127,6 @@ import eu.kanade.tachiyomi.util.view.canStillGoBack
 import eu.kanade.tachiyomi.util.view.doOnApplyWindowInsetsCompat
 import eu.kanade.tachiyomi.util.view.findChild
 import eu.kanade.tachiyomi.util.view.getItemView
-import eu.kanade.tachiyomi.util.view.isCompose
 import eu.kanade.tachiyomi.util.view.mainRecyclerView
 import eu.kanade.tachiyomi.util.view.snack
 import eu.kanade.tachiyomi.util.view.withFadeInTransaction
@@ -167,8 +166,6 @@ open class MainActivity : BaseActivity<MainActivityBinding>() {
     private val extensionManager: ExtensionManager by injectLazy()
     private val hideBottomNav
         get() = router.backstackSize > 1 && router.backstack[1].controller !is DialogController
-    private val hideAppBar
-        get() = router.isCompose
 
     private val updateChecker by lazy { AppUpdateChecker() }
     private val isUpdaterEnabled = BuildConfig.INCLUDE_UPDATER
@@ -516,7 +513,7 @@ open class MainActivity : BaseActivity<MainActivityBinding>() {
                     }
                     binding.searchToolbar.menu.forEach { it.isVisible = false }
                     lifecycleScope.launchUI {
-                        (controller as? BaseLegacyController<*>)?.onActionViewExpand(item)
+                        (controller as? BaseController<*>)?.onActionViewExpand(item)
                         (controller as? SettingsController)?.onActionViewExpand(item)
                         reEnableBackPressedCallBack()
                     }
@@ -529,7 +526,7 @@ open class MainActivity : BaseActivity<MainActivityBinding>() {
                     controller?.mainRecyclerView?.requestApplyInsets()
                     setupSearchTBMenu(binding.toolbar.menu, true)
                     lifecycleScope.launchUI {
-                        (controller as? BaseLegacyController<*>)?.onActionViewCollapse(item)
+                        (controller as? BaseController<*>)?.onActionViewCollapse(item)
                         (controller as? SettingsController)?.onActionViewCollapse(item)
                         reEnableBackPressedCallBack()
                     }
@@ -567,7 +564,7 @@ open class MainActivity : BaseActivity<MainActivityBinding>() {
                 ) {
                     to?.view?.alpha = 1f
                     syncActivityViewWithController(to, from, isPush)
-                    binding.appBar.isVisible = !hideAppBar
+                    binding.appBar.isVisible = true
                     binding.appBar.alpha = 1f
                     if (binding.backShadow.isVisible && !isPush) {
                         val bA = ObjectAnimator.ofFloat(binding.backShadow, View.ALPHA, 0f)
@@ -626,7 +623,7 @@ open class MainActivity : BaseActivity<MainActivityBinding>() {
 
         val navIcon = if (router.backstackSize > 1) backDrawable else null
         binding.toolbar.navigationIcon = navIcon
-        (router.backstack.lastOrNull()?.controller as? BaseLegacyController<*>)?.setTitle()
+        (router.backstack.lastOrNull()?.controller as? BaseController<*>)?.setTitle()
         (router.backstack.lastOrNull()?.controller as? SettingsController)?.setTitle()
 
         if (savedInstanceState == null && this !is SearchActivity) {
@@ -645,17 +642,17 @@ open class MainActivity : BaseActivity<MainActivityBinding>() {
         getExtensionUpdates(true)
 
         preferences.extensionUpdatesCount()
-            .changesIn(lifecycleScope) {
+            .asImmediateFlowIn(lifecycleScope) {
                 setExtensionsBadge()
             }
         preferences.incognitoMode()
-            .changesIn(lifecycleScope) {
+            .asImmediateFlowIn(lifecycleScope) {
                 binding.toolbar.setIncognitoMode(it)
                 binding.searchToolbar.setIncognitoMode(it)
                 SecureActivityDelegate.setSecure(this)
             }
         preferences.sideNavIconAlignment()
-            .changesIn(lifecycleScope) {
+            .asImmediateFlowIn(lifecycleScope) {
                 binding.sideNav?.menuGravity = when (it) {
                     1 -> Gravity.CENTER
                     2 -> Gravity.BOTTOM
@@ -701,7 +698,7 @@ open class MainActivity : BaseActivity<MainActivityBinding>() {
     var searchTitle: String?
         get() {
             return try {
-                (router.backstack.lastOrNull()?.controller as? BaseLegacyController<*>)?.getSearchTitle()
+                (router.backstack.lastOrNull()?.controller as? BaseController<*>)?.getSearchTitle()
                     ?: (router.backstack.lastOrNull()?.controller as? SettingsController)?.getSearchTitle()
             } catch (_: Exception) {
                 binding.searchToolbar.title?.toString()
@@ -776,7 +773,7 @@ open class MainActivity : BaseActivity<MainActivityBinding>() {
     private fun setSearchTBLongClick() {
         binding.searchToolbar.setOnLongClickListener {
             binding.searchToolbar.menu.findItem(R.id.action_search)?.expandActionView()
-            val visibleController = router.backstack.lastOrNull()?.controller as? BaseLegacyController<*>
+            val visibleController = router.backstack.lastOrNull()?.controller as? BaseController<*>
             val longClickQuery = visibleController?.onSearchActionViewLongClickQuery()
             if (longClickQuery != null) {
                 binding.searchToolbar.searchView?.setQuery(longClickQuery, true)
@@ -1058,11 +1055,11 @@ open class MainActivity : BaseActivity<MainActivityBinding>() {
                 }
             }
             Intent.ACTION_VIEW -> {
-                if (router.backstack.isEmpty()) nav.selectedItemId = R.id.nav_library
+                // Deep link to add extension repo
                 if (intent.scheme == "tachiyomi" && intent.data?.host == "add-repo") {
                     intent.data?.getQueryParameter("url")?.let { repoUrl ->
                         router.popToRoot()
-                        router.pushController(ExtensionRepoController(repoUrl).withFadeTransaction())
+                        router.pushController(RepoController(repoUrl).withFadeTransaction())
                     }
                 }
             }

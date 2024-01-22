@@ -80,7 +80,7 @@ class ChapterCache(private val context: Context) {
         get() = Formatter.formatFileSize(context, realSize)
 
     init {
-        preferences.preloadSize().changes()
+        preferences.preloadSize().asFlow()
             .drop(1)
             .onEach {
                 // Save old cache for destruction later

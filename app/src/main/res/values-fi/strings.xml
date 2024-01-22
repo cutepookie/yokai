@@ -127,6 +127,11 @@
     <string name="untrusted">Luottamaton</string>
     <string name="uninstall">Poista asennus</string>
     <string name="untrusted_extension">Luottamattomat laajennokset</string>
+    <string name="untrusted_extension_message">Tämä laajennus on allekirjoitettu luottamattomalla sertifikaatilla ja sitä ei ole aktivoitu.
+\n
+\nHaitallinen laajennus voisi lukea mahdolliset kirjautumistiedot Tachiyomista tai suorittaa luvatonta koodia.
+\n
+\nLuottamalla tähän sertifikaattiin hyväksyt nämä riskit.</string>
     <string name="version_">Versio: %1$s</string>
     <string name="language_">Kieli: %1$s</string>
     <string name="fullscreen">Koko näyttö</string>
@@ -147,6 +152,7 @@
     <string name="left_to_right_viewer">Vasemmalta oikealle</string>
     <string name="right_to_left_viewer">Oikealta vasemmalle</string>
     <string name="vertical_viewer">Pystysuora</string>
+    <string name="webtoon">Webtoon-tyylinen</string>
     <string name="scale_type">Skaalauksen tyyppi</string>
     <string name="fit_screen">Sovita näyttöön</string>
     <string name="stretch">Venytä</string>
@@ -196,7 +202,7 @@
     <string name="clear_cookies">Tyhjennä keksit</string>
     <string name="cookies_cleared">Keksit tyhjennetty</string>
     <string name="clear_database">Tyhjennä tietokanta</string>
-    <string name="clear_database_summary">Poista sarjat ja luvut jotka eivät ole kirjastossa</string>
+    <string name="clear_database_summary">Poista mangan historia, jota ei ole tallennettu kirjastoosi</string>
     <string name="clear_database_confirmation">Oletko varma\? Luetut luvut ja eteneminen poistetaan muista kun kirjastossa olevista sarjoista</string>
     <string name="clear_database_completed">Tiedot poistettu</string>
     <string name="refresh_library_metadata">Päivitä kirjaston metatiedot</string>
@@ -266,12 +272,12 @@
     <string name="lock_with_biometrics">Vaadi lukituksen avaaminen</string>
     <string name="lock_when_idle">Lukitse käyttämättömänä</string>
     <string name="always_show_chapter_transition">Näytä aina luvun vaihdos</string>
-    <string name="pref_long_strip_side_padding">Sivuntäyttö</string>
-    <string name="long_strip_side_padding_0">Ei yhtään</string>
-    <string name="long_strip_side_padding_10">10%</string>
-    <string name="long_strip_side_padding_15">15%</string>
-    <string name="long_strip_side_padding_20">20%</string>
-    <string name="long_strip_side_padding_25">25%</string>
+    <string name="pref_webtoon_side_padding">Sivuntäyttö</string>
+    <string name="webtoon_side_padding_0">Ei yhtään</string>
+    <string name="webtoon_side_padding_10">10%</string>
+    <string name="webtoon_side_padding_15">15%</string>
+    <string name="webtoon_side_padding_20">20%</string>
+    <string name="webtoon_side_padding_25">25%</string>
     <string name="chapters_">Luvut %1$s</string>
     <string name="remove_from_library">Poista kirjastosta</string>
     <string name="refresh_tracking">Päivitä seuranta</string>
@@ -431,9 +437,7 @@
     <string name="no_chapters_error">Lukuja ei löytynyt</string>
     <string name="badges">Merkit</string>
     <string name="last_used">Viimeksi käytetty</string>
-    <string name="unofficial_extension_message">Tämä laajennus ei ole virallisesta Tachiyomi-laajennusluettelosta.</string>
     <string name="nsfw_short">18+</string>
-    <string name="unofficial">Epävirallinen</string>
     <string name="may_contain_nsfw">Voi sisältää NSFW (18+) -sisältöä</string>
     <string name="next_page">Seuraava sivu</string>
     <string name="previous_page">Edellinen sivu</string>
@@ -556,6 +560,7 @@
     <string name="smart_by_theme">Älykäs (teeman mukaan)</string>
     <string name="smart_by_page">Älykäs (sivun mukaan)</string>
     <string name="enable_zoom_out">Ota zoomaus käyttöön</string>
+    <string name="webtoon_style">Webtoon tyylinen</string>
     <string name="reading_">Luettavana %1$s</string>
     <string name="set_as_default_for_all">Aseta kaikkien oletusasetukseksi</string>
     <string name="reader_settings">Lukijan asetukset</string>
@@ -740,6 +745,7 @@
     <string name="landscape">Vaakataso</string>
     <string name="portrait">Pystysuunta</string>
     <string name="remove_crop">Poista rajaus</string>
+    <string name="crop_borders_webtoon">Rajaa reunat (Webtoon)</string>
     <string name="crop_borders_paged">Rajaa reunat (sivutettu)</string>
     <string name="invert_double_pages">Käännä kaksoissivut</string>
     <string name="save_combined_pages">Tallenna yhdistetyt sivut</string>
@@ -832,7 +838,7 @@
     <string name="pref_manage_notifications">Hallitse ilmoituksia</string>
     <string name="faq_and_guides">Usein kysytyt kysymykset ja oppaat</string>
     <string name="secure_screen_summary">Turvallinen ruutu piilottaa sovelluksen sisällön sovelluksia vaihdettaessa ja estää kuvakaappauksen ottamisen</string>
-    <string name="long_strip_side_padding_5">5%</string>
+    <string name="webtoon_side_padding_5">5%</string>
     <string name="backup_restore_invalid_uri">Virhe: tyhjä URI</string>
     <string name="downloaded_chapters">Ladatut luvut</string>
     <string name="pref_update_only_started">Ei lukemattomia lukuja</string>
@@ -894,4 +900,7 @@
     <string name="pref_remove_exclude_categories">Poissuljetut kategoriat</string>
     <string name="ext_installer_pref">Asentaja</string>
     <string name="label_background_activity">Taustatoiminta</string>
+    <string name="library_entries">Manga</string>
+    <string name="updates_last_update_info">Kirjasto päivitetty viimeksi: %1$s</string>
+    <string name="trackers">Palvelut</string>
 </resources>

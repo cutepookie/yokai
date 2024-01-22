@@ -23,7 +23,6 @@ import com.bluelinelabs.conductor.ControllerChangeHandler
 import com.bluelinelabs.conductor.ControllerChangeType
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
-import dev.yokai.presentation.extension.repo.ExtensionRepoController
 import eu.davidea.flexibleadapter.FlexibleAdapter
 import eu.davidea.flexibleadapter.items.IFlexible
 import eu.kanade.tachiyomi.R
@@ -34,7 +33,7 @@ import eu.kanade.tachiyomi.extension.util.ExtensionInstaller
 import eu.kanade.tachiyomi.source.CatalogueSource
 import eu.kanade.tachiyomi.source.LocalSource
 import eu.kanade.tachiyomi.source.Source
-import eu.kanade.tachiyomi.ui.base.controller.BaseLegacyController
+import eu.kanade.tachiyomi.ui.base.controller.BaseController
 import eu.kanade.tachiyomi.ui.extension.ExtensionFilterController
 import eu.kanade.tachiyomi.ui.main.BottomSheetController
 import eu.kanade.tachiyomi.ui.main.FloatingSearchInterface
@@ -43,6 +42,7 @@ import eu.kanade.tachiyomi.ui.main.RootSearchInterface
 import eu.kanade.tachiyomi.ui.setting.SettingsBrowseController
 import eu.kanade.tachiyomi.ui.setting.SettingsSourcesController
 import eu.kanade.tachiyomi.ui.source.browse.BrowseSourceController
+import eu.kanade.tachiyomi.ui.source.browse.repos.RepoController
 import eu.kanade.tachiyomi.ui.source.globalsearch.GlobalSearchController
 import eu.kanade.tachiyomi.util.system.dpToPx
 import eu.kanade.tachiyomi.util.system.getBottomGestureInsets
@@ -55,7 +55,6 @@ import eu.kanade.tachiyomi.util.view.checkHeightThen
 import eu.kanade.tachiyomi.util.view.collapse
 import eu.kanade.tachiyomi.util.view.expand
 import eu.kanade.tachiyomi.util.view.isCollapsed
-import eu.kanade.tachiyomi.util.view.isCompose
 import eu.kanade.tachiyomi.util.view.isControllerVisible
 import eu.kanade.tachiyomi.util.view.requestFilePermissionsSafe
 import eu.kanade.tachiyomi.util.view.scrollViewWith
@@ -81,7 +80,7 @@ import kotlin.math.max
  * [SourceAdapter.SourceListener] call function data on browse item click.
  */
 class BrowseController :
-    BaseLegacyController<BrowseControllerBinding>(),
+    BaseController<BrowseControllerBinding>(),
     FlexibleAdapter.OnItemClickListener,
     SourceAdapter.SourceListener,
     RootSearchInterface,
@@ -178,7 +177,7 @@ class BrowseController :
         requestFilePermissionsSafe(301, preferences)
         binding.bottomSheet.root.onCreate(this)
 
-        preferences.extensionInstaller().changes()
+        preferences.extensionInstaller().asFlow()
             .drop(1)
             .onEach {
                 binding.bottomSheet.root.setCanInstallPrivately(it == ExtensionInstaller.PRIVATE)
@@ -363,8 +362,8 @@ class BrowseController :
                 R.id.action_sources_settings -> {
                     router.pushController(SettingsBrowseController().withFadeTransaction())
                 }
-                R.id.action_extension_repos_settings -> {
-                    router.pushController(ExtensionRepoController().withFadeTransaction())
+                R.id.action_ext_repos -> {
+                    router.pushController(RepoController().withFadeTransaction())
                 }
             }
             return@setOnMenuItemClickListener true
@@ -544,7 +543,7 @@ class BrowseController :
         if (!type.isEnter) {
             binding.bottomSheet.root.canExpand = false
             activityBinding?.appBar?.alpha = 1f
-            activityBinding?.appBar?.isInvisible = router.isCompose
+            activityBinding?.appBar?.isInvisible = false
             binding.bottomSheet.sheetToolbar.menu.findItem(R.id.action_search)?.let { searchItem ->
                 val searchView = searchItem.actionView as SearchView
                 searchView.clearFocus()

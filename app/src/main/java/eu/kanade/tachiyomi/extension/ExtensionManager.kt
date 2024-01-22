@@ -4,9 +4,8 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Parcelable
-import dev.yokai.domain.extension.TrustExtension
+import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
-import eu.kanade.tachiyomi.data.preference.plusAssign
 import eu.kanade.tachiyomi.extension.api.ExtensionApi
 import eu.kanade.tachiyomi.extension.model.Extension
 import eu.kanade.tachiyomi.extension.model.InstallStep
@@ -14,9 +13,12 @@ import eu.kanade.tachiyomi.extension.model.LoadResult
 import eu.kanade.tachiyomi.extension.util.ExtensionInstallReceiver
 import eu.kanade.tachiyomi.extension.util.ExtensionInstaller
 import eu.kanade.tachiyomi.extension.util.ExtensionLoader
+import eu.kanade.tachiyomi.extension.util.TrustExtension
 import eu.kanade.tachiyomi.source.Source
 import eu.kanade.tachiyomi.ui.extension.ExtensionIntallInfo
 import eu.kanade.tachiyomi.util.system.launchNow
+import eu.kanade.tachiyomi.util.system.toast
+import eu.kanade.tachiyomi.util.system.withUIContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.Flow
@@ -133,10 +135,10 @@ class ExtensionManager(
         val extensions: List<Extension.Available> = try {
             api.findExtensions()
         } catch (e: Exception) {
-            Timber.e(e)
+            Timber.e(e, context.getString(R.string.extension_api_error))
+            withUIContext { context.toast(R.string.extension_api_error) }
             emptyList()
         }
-
         enableAdditionalSubLanguages(extensions)
 
         _availableExtensionsFlow.value = extensions
@@ -166,7 +168,7 @@ class ExtensionManager(
             .map(Extension.AvailableSource::lang)
 
         val deviceLanguage = Locale.getDefault().language
-        val defaultLanguages = preferences.enabledLanguages().defaultValue()
+        val defaultLanguages = preferences.enabledLanguages().defaultValue
         val languagesToEnable = availableLanguages.filter {
             it != deviceLanguage && it.startsWith(deviceLanguage) && !it.startsWith("en")
         }
@@ -312,13 +314,13 @@ class ExtensionManager(
      * Adds the given extension to the list of trusted extensions. It also loads in background the
      * now trusted extensions.
      *
-     * @param pkgName the package name of the extension
-     * @param versionCode the version code of the extension
-     * @param signatureHash the signature hash of the extension
+     * @param pkgName the package name of the extension to trust
+     * @param versionCode the version code of the extension to trust
+     * @param signatureHash the signature hash of the extension to trust
      */
     fun trust(pkgName: String, versionCode: Long, signatureHash: String) {
-        val untrustedPkgName = untrustedExtensionsFlow.value.map { it.pkgName }.toSet()
-        if (pkgName !in untrustedPkgName) return
+        val untrustedPkgNames = untrustedExtensionsFlow.value.map { it.pkgName }.toSet()
+        if (pkgName !in untrustedPkgNames) return
 
         trustExtension.trust(pkgName, versionCode, signatureHash)
 
@@ -441,7 +443,7 @@ class ExtensionManager(
         val name: String,
         val versionCode: Long,
         val libVersion: Double,
-        val repoUrl: String? = null,
+        val repoUrl: String,
     ) : Parcelable {
         constructor(extension: Extension.Available) : this(
             apkName = extension.apkName,

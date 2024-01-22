@@ -40,7 +40,7 @@ class DebugController : SettingsController() {
             preference {
                 key = "pref_version"
                 title = "Version"
-                summary = if (BuildConfig.DEBUG || BuildConfig.BETA) {
+                summary = if (BuildConfig.DEBUG) {
                     "r" + BuildConfig.COMMIT_COUNT
                 } else {
                     BuildConfig.VERSION_NAME

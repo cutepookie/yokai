@@ -94,6 +94,7 @@
     <string name="left_to_right_viewer">बाएं से दाएं</string>
     <string name="right_to_left_viewer">दाएं से बाएं</string>
     <string name="vertical_viewer">शीर्ष से असंतत</string>
+    <string name="webtoon">वेबटून</string>
     <string name="scale_type">मापन प्ररूप</string>
     <string name="fit_screen">उपयुक्त स्क्रीन</string>
     <string name="stretch">खींचें</string>
@@ -228,6 +229,11 @@
     <string name="untrusted">अविश्वस्त</string>
     <string name="uninstall">स्थापना रद्द करें</string>
     <string name="untrusted_extension">अविश्वस्त एक्सटेंशन</string>
+    <string name="untrusted_extension_message">यह एक्सटेंशन एक अविश्वस्त प्रमाणपत्र के साथ हस्ताक्षरित हुआ था और सक्रिय नहीं हुआ था।
+\n
+\nदुर्भावनापूर्ण विस्तार, किसी भी लॉगिन क्रेडेंशियल्स को ताचियोमी में संग्रहीत या मनमाना कोड निष्पादित कर सकता है
+\n
+\nइस प्रमाणपत्र पर विश्वास करके आप इन जोखिमों को स्वीकार करते हैं।</string>
     <string name="version_">संस्करण: %1$s</string>
     <string name="language_">भाषा: %1$s</string>
     <string name="double_tap_anim_speed">डबल टैप एनीमेशन गति</string>
@@ -290,12 +296,12 @@
     <string name="continuous_vertical">लगातार लंबवत</string>
     <string name="paged">पृष्ठांकित</string>
     <string name="always_show_chapter_transition">हमेशा अध्याय संक्रमण दिखाएं</string>
-    <string name="pref_long_strip_side_padding">साइड पैडिंग</string>
-    <string name="long_strip_side_padding_0">कुछ नहीं</string>
-    <string name="long_strip_side_padding_10">10%</string>
-    <string name="long_strip_side_padding_15">15%</string>
-    <string name="long_strip_side_padding_20">20%</string>
-    <string name="long_strip_side_padding_25">25%</string>
+    <string name="pref_webtoon_side_padding">साइड पैडिंग</string>
+    <string name="webtoon_side_padding_0">कुछ नहीं</string>
+    <string name="webtoon_side_padding_10">10%</string>
+    <string name="webtoon_side_padding_15">15%</string>
+    <string name="webtoon_side_padding_20">20%</string>
+    <string name="webtoon_side_padding_25">25%</string>
     <string name="chapters_">अध्याय %1$s</string>
     <string name="remove_from_library">लाइब्रेरी से निकालें</string>
     <string name="network">नेटवर्क</string>
@@ -338,9 +344,7 @@
     <string name="no_chapters_error">कोई अध्याय नहीं मिला</string>
     <string name="badges">बैज</string>
     <string name="last_used">आखरी इस्त्तमाल किया गया</string>
-    <string name="unofficial_extension_message">यह एक्सटेंशन आधिकारिक ताचियोमी एक्सटेंशन सूची से नहीं है।</string>
     <string name="nsfw_short">18+</string>
-    <string name="unofficial">अनौपचारिक</string>
     <string name="may_contain_nsfw">इसमें NSFW (18+) सामग्री हो सकती है</string>
     <string name="next_page">अगला पृष्ठ</string>
     <string name="previous_page">पिछला पृष्ठ</string>
@@ -578,7 +582,7 @@
     <string name="release_page">रिलीज़ पेज</string>
     <string name="library_search_hint">शीर्षक, टैग, स्रोत खोजें</string>
     <string name="no_description">कोई विवरण नहीं</string>
-    <string name="long_strip_side_padding_5">५%</string>
+    <string name="webtoon_side_padding_5">५%</string>
     <string name="downloaded_chapters">डाउनलोड किए गए अध्याय</string>
     <string name="no_matches_for_filters_short">आपके फ़िल्टर के लिए कोई मिलान नहीं</string>
     <string name="loader_rar5_error">RARv5 प्रारूप समर्थित नहीं है</string>
@@ -627,4 +631,5 @@
     <string name="library_entries">लाइब्रेरी के आइटम</string>
     <string name="pref_debug_info">डीबग जानकारी</string>
     <string name="label_background_activity">पृष्ठभूमि गतिविधि</string>
+    <string name="trackers">सेवाएं</string>
 </resources>

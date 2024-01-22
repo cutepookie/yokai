@@ -84,7 +84,7 @@
     <string name="extensions">Paplašinājumi</string>
     <string name="extension_info">Paplašinājumu informācija</string>
     <string name="vertical_viewer">Vertikāls</string>
-    <string name="long_strip_side_padding_0">Nekāds</string>
+    <string name="webtoon_side_padding_0">Nekāds</string>
     <string name="migrate">Migrēt</string>
     <string name="help">Palīdzība</string>
     <string name="language">Valoda</string>
@@ -165,6 +165,7 @@
     <string name="author">Autors</string>
     <string name="title">Nosaukums</string>
     <string name="not_started">Nav sākts</string>
+    <string name="webtoon">Webtoon</string>
     <string name="comic">Komikss</string>
     <string name="manhua"/>
     <string name="manhwa"/>
@@ -235,12 +236,16 @@
     <string name="select_inverse">Atlasiet apgrieztu</string>
     <string name="pref_manage_notifications">Pārvaldiet paziņojumus</string>
     <string name="all">Visi</string>
+    <string name="untrusted_extension_message">Šis paplašinājums tika parakstīts ar neuzticamu sertifikātu, un tas netika aktivizēts.
+\n
+\nĻaunprātīgs paplašinājums var nolasīt visus pieteikšanās akreditācijas datus, kas saglabāti Tachiyomi, vai izpildīt patvaļīgu kodu.
+\n
+\nUzticoties šim sertifikātam, jūs piekrītat šiem riskiem.</string>
     <string name="obsolete_extension_message">Šis paplašinājums vairs nav pieejams.</string>
     <string name="pref_library_update_manga_restriction">Izlaist sēriju atjaunināšanu</string>
     <string name="pref_update_only_started">Kas nav sāktas</string>
     <string name="cancel_all_for_series">Atcelt visu šai sērijai</string>
     <string name="untrusted_extension">Neuzticams paplašinājums</string>
-    <string name="unofficial_extension_message">Šis paplašinājums nav no oficiālo Tachiyomi paplašinājumu saraksta.</string>
     <string name="ext_installer_shizuku_stopped">Shizuku nedarbojas</string>
     <string name="ext_installer_shizuku_unavailable_dialog">Instalējiet un startējiet Shizuku, lai izmantotu Shizuku kā paplašinājuma instalētāju.</string>
     <string name="pref_update_only_completely_read">Ar nelasītu(ām) nodaļu(ām)</string>
@@ -266,13 +271,13 @@
     <string name="whats_new">Jaunumi</string>
     <string name="split_tall_images">Sadalīt augstus attēlus</string>
     <string name="pref_inverted_colors">Invertēts</string>
-    <string name="pref_long_strip_side_padding">Sānu platums</string>
+    <string name="pref_webtoon_side_padding">Sānu platums</string>
     <string name="l_nav">L formas</string>
     <string name="right_and_left_nav">Pa labi un pa kreisi</string>
-    <string name="long_strip_side_padding_10">10%</string>
-    <string name="long_strip_side_padding_15">15%</string>
-    <string name="long_strip_side_padding_20">20%</string>
-    <string name="long_strip_side_padding_25">25%</string>
+    <string name="webtoon_side_padding_10">10%</string>
+    <string name="webtoon_side_padding_15">15%</string>
+    <string name="webtoon_side_padding_20">20%</string>
+    <string name="webtoon_side_padding_25">25%</string>
     <string name="enhanced_tracking_info">Pakalpojumi, kas nodrošina uzlabotus līdzekļus konkrētiem avotiem. Pievienojot bibliotēkai, manga tiks automātiski izsekota.</string>
     <string name="enhanced_services">Uzlabotie pakalpojumi</string>
     <string name="empty_backup_error">Nav bibliotēkas ierakstu, ko dublēt</string>
@@ -413,7 +418,6 @@
         <item quantity="one"/>
         <item quantity="other"/>
     </plurals>
-    <string name="unofficial">Neoficiāls</string>
     <string name="overlay">Parklājums</string>
     <string name="updates_tracking_details">Atjaunina statusu, vērtējumu un pēdējo izlasīto nodaļu no sekošanas servisa</string>
     <string name="faq_and_guides">Biežāk uzdotie jautājumi un rokasgrāmatas</string>
@@ -542,7 +546,7 @@
     <string name="lavender">Lavanda</string>
     <string name="tap_zones">Skāriena zonas</string>
     <string name="reduces_banding_impacts_performance">Samazina grupēšanu, bet var ietekmēt veiktspēju</string>
-    <string name="long_strip_side_padding_5">5%</string>
+    <string name="webtoon_side_padding_5">5%</string>
     <string name="downloaded_chapters">Lejupielādētās nodaļas</string>
     <string name="allow_deleting_bookmarked_chapters">Atļaut dzēst ar grāmatzīmēm atzīmētās nodaļas</string>
     <string name="updates_last_update_info">Bibliotēka pēdējo reizi atjaunināta: %s</string>
@@ -582,4 +586,8 @@
     <string name="clear_database_summary">Dzēst vēsturi ierakstiem, kas nav saglabāti jūsu bibliotēkā</string>
     <string name="pref_debug_info">Atkļūdošanas informācija</string>
     <string name="label_background_activity">Fona darbība</string>
+    <string name="source_settings">Avota iestatījumi</string>
+    <string name="app_settings">Lietotnes iestatījumi</string>
+    <string name="apply">Pieteikties</string>
+    <string name="rotation">Rotācijas tips</string>
 </resources>

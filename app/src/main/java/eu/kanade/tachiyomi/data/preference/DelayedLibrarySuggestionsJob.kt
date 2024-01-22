@@ -16,7 +16,7 @@ class DelayedLibrarySuggestionsJob(context: Context, workerParams: WorkerParamet
 
     override suspend fun doWork(): Result {
         val preferences = Injekt.get<PreferencesHelper>()
-        if (!preferences.showLibrarySearchSuggestions().isSet()) {
+        if (preferences.showLibrarySearchSuggestions().isNotSet()) {
             preferences.showLibrarySearchSuggestions().set(true)
             LibraryPresenter.setSearchSuggestion(preferences, Injekt.get(), Injekt.get())
         }

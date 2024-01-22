@@ -57,7 +57,7 @@ class WebtoonConfig(
                 },
             )
 
-        preferences.webtoonNavInverted().changes()
+        preferences.webtoonNavInverted().asFlow()
             .drop(1)
             .onEach {
                 navigationModeInvertedListener?.invoke()

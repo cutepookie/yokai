@@ -150,7 +150,7 @@
 
                 <data
                     android:host="myanimelist-auth"
-                    android:scheme="yokai" />
+                    android:scheme="tachiyomij2k" />
             </intent-filter>
         </activity>
         <activity
@@ -165,7 +165,7 @@
 
                 <data
                     android:host="anilist-auth"
-                    android:scheme="yokai" />
+                    android:scheme="tachiyomi" />
             </intent-filter>
         </activity>
         <activity

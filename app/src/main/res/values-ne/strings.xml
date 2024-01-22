@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="webtoon">वेबटून</string>
     <string name="read">पढेको</string>
     <string name="no_pages_found">कुनै पृष्ठहरू फेला परेन</string>
     <string name="edit_categories">वर्गहरू सम्पादन गर्नुहोस्</string>
@@ -25,7 +26,7 @@
     <string name="reading_mode">पढ्ने मोड</string>
     <string name="grayscale">ग्रे-स्केल</string>
     <string name="pref_inverted_colors">उल्टो</string>
-    <string name="pref_long_strip_side_padding">साइड प्याडिङ</string>
+    <string name="pref_webtoon_side_padding">साइड प्याडिङ</string>
     <string name="actions">कार्यहरू</string>
     <string name="pref_highest">सबैभन्दा उच्च</string>
     <string name="failed_to_update_cover">आवरण अपडेट गर्न असफल भयो</string>
@@ -137,9 +138,12 @@
     <string name="ext_installer_shizuku_stopped">Shizuku चलिरहेको छैन</string>
     <string name="ext_installer_shizuku_unavailable_dialog">Shizuku लाई एक्सटेन्शन इंस्टलरको रूपमा प्रयोग गर्न Shizuku स्थापना गर्नुहोस् र सुरु गर्नुहोस्।</string>
     <string name="untrusted_extension">अविश्वसनीय एक्सटेन्शन</string>
-    <string name="unofficial_extension_message">यो एक्सटेन्शन आधिकारिक ताचियोमीको एक्सटेन्शन सूचीबाट होइन।</string>
+    <string name="untrusted_extension_message">यो एक्सटेन्शन एक अविश्वसनीय प्रमाणपत्र संग हस्ताक्षर गरिएको थियो र सक्रिय गरिएको थिएन।
+\n
+\nएउटा खराब एक्सटेन्शनले ताचियोमीमा भण्डारण गरिएका कुनै पनि लगइन प्रमाणहरू पढ्न वा स्वेच्छाचारी कोड कार्यान्वयन गर्न सक्छ।
+\n
+\nयस प्रमाणपत्रमा विश्वास गरेर तपाईंले यी जोखिमहरू स्वीकार गर्नुहुन्छ।</string>
     <string name="nsfw_short">१८+</string>
-    <string name="unofficial">अनौपचारिक</string>
     <string name="app_info">एप जानकारी</string>
     <string name="update_all">सबै अपडेट गर्नुहोस्</string>
     <plurals name="extension_updates_available">
@@ -206,12 +210,12 @@
     <string name="blue_initial">B</string>
     <string name="alpha_initial">A</string>
     <string name="always_show_chapter_transition">अध्याय ट्रान्जिसन सधैँ देखाउनुहोस्</string>
-    <string name="long_strip_side_padding_0">कुनै पनि हैन</string>
-    <string name="long_strip_side_padding_5">५%</string>
-    <string name="long_strip_side_padding_10">१०%</string>
-    <string name="long_strip_side_padding_15">१५%</string>
-    <string name="long_strip_side_padding_20">२०%</string>
-    <string name="long_strip_side_padding_25">२५%</string>
+    <string name="webtoon_side_padding_0">कुनै पनि हैन</string>
+    <string name="webtoon_side_padding_5">५%</string>
+    <string name="webtoon_side_padding_10">१०%</string>
+    <string name="webtoon_side_padding_15">१५%</string>
+    <string name="webtoon_side_padding_20">२०%</string>
+    <string name="webtoon_side_padding_25">२५%</string>
     <string name="l_nav">L आकारको</string>
     <string name="kindlish_nav">किन्डल जस्तै</string>
     <string name="edge_nav">कुना</string>
@@ -692,6 +696,7 @@
         <item quantity="other">%d एक्सटेन्शनहरू अपडेट गरियो</item>
     </plurals>
     <string name="changing_will_reset_reading_mode">यसलाई परिवर्तन गर्नाले यो श्रृङ्खलाको लागि पढ्ने मोड रिसेट हुनेछ</string>
+    <string name="webtoon_style">वेबटुन जस्तै</string>
     <string name="set_first_page_as_cover">पहिलो पृष्ठ आवरणको रूपमा सेट गर्नुहोस्</string>
     <string name="share_first_page">पहिलो पृष्ठ साझा गर्नुहोस्</string>
     <string name="set_second_page_as_cover">दोस्रो पृष्ठ आवरणको रूपमा सेट गर्नुहोस्</string>
@@ -701,6 +706,7 @@
     <string name="zoom_double_page_spreads">डबल पृष्ठ स्प्रेडमा जूम गर्नुहोस्</string>
     <string name="remove_crop">क्रप हटाउनुहोस्</string>
     <string name="crop_borders_paged">सीमाना क्रप गर्नुहोस् (पृष्ठबद्ध)</string>
+    <string name="crop_borders_webtoon">सीमाना क्रप गर्नुहोस् (वेबटून)</string>
     <string name="split_double_pages_portrait">पोर्ट्रेटमा डबल पृष्ठ विभाजित गर्नुहोस्</string>
     <string name="horizontally">तेर्सो रूपमा</string>
     <string name="vertically">ठाडो रूपमा</string>
@@ -1063,4 +1069,7 @@
     <string name="app_settings">एप सेटिङहरू</string>
     <string name="pref_debug_info">Debug जानकारी</string>
     <string name="label_background_activity">ब्याकग्राउण्ड गतिविधि</string>
+    <string name="share_cover">आवरण साझा गर्नुहोस्</string>
+    <string name="save_pages_separately">फरक फोल्डरमा पृष्ठहरू सेभ गर्नुहोस्</string>
+    <string name="create_folders_by_manga_title">माङ्गा शीर्षक अनुसार फोल्डरहरू सिर्जना गर्दछ</string>
 </resources>

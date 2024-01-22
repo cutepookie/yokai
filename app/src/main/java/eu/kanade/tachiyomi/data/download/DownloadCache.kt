@@ -54,7 +54,7 @@ class DownloadCache(
     val scope = CoroutineScope(Job() + Dispatchers.IO)
 
     init {
-        preferences.downloadsDirectory().changes()
+        preferences.downloadsDirectory().asFlow()
             .drop(1)
             .onEach { lastRenew = 0L } // invalidate cache
             .launchIn(scope)

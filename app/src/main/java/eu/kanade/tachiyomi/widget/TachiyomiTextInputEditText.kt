@@ -7,11 +7,12 @@ import androidx.core.view.inputmethod.EditorInfoCompat
 import com.google.android.material.textfield.TextInputEditText
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
-import eu.kanade.tachiyomi.data.preference.changesIn
+import eu.kanade.tachiyomi.data.preference.asImmediateFlow
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.launchIn
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 
@@ -48,13 +49,13 @@ class TachiyomiTextInputEditText @JvmOverloads constructor(
          */
         fun EditText.setIncognito(viewScope: CoroutineScope) {
             try {
-                Injekt.get<PreferencesHelper>().incognitoMode().changesIn(viewScope) {
+                Injekt.get<PreferencesHelper>().incognitoMode().asImmediateFlow {
                     imeOptions = if (it) {
                         imeOptions or EditorInfoCompat.IME_FLAG_NO_PERSONALIZED_LEARNING
                     } else {
                         imeOptions and EditorInfoCompat.IME_FLAG_NO_PERSONALIZED_LEARNING.inv()
                     }
-                }
+                }.launchIn(viewScope)
             } catch (_: Exception) {
             }
         }

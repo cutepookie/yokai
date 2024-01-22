@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="manga">Манкӑ</string>
+    <string name="app_short_name" translatable="false">TachiJ2K</string>
+    <string name="app_name" translatable="false">TachiyomiJ2K</string>
+    <string name="webtoon">Тетел кумӑкс</string>
     <string name="author">Авттӑр</string>
     <string name="unread">Вуламан</string>
     <string name="chapter_">%1$s-мӗш сыпӑк</string>
@@ -262,12 +265,12 @@
     <string name="remove_from_library">Вулавӑшран катерт</string>
     <string name="add_to_library">Вулавӑша хуш</string>
     <string name="added_to_library">Вулавӑша хуш</string>
-    <string name="long_strip_side_padding_25">25%</string>
-    <string name="long_strip_side_padding_20">20%</string>
-    <string name="long_strip_side_padding_15">15%</string>
-    <string name="long_strip_side_padding_10">10%</string>
-    <string name="long_strip_side_padding_0">Чакусӑр</string>
-    <string name="pref_long_strip_side_padding">Аяккинчи чаку</string>
+    <string name="webtoon_side_padding_25">25%</string>
+    <string name="webtoon_side_padding_20">20%</string>
+    <string name="webtoon_side_padding_15">15%</string>
+    <string name="webtoon_side_padding_10">10%</string>
+    <string name="webtoon_side_padding_0">Чакусӑр</string>
+    <string name="pref_webtoon_side_padding">Аяккинчи чаку</string>
     <string name="vertical_viewer">Урлӑ</string>
     <string name="right_to_left_viewer">Сылтӑмран сулахаялла</string>
     <string name="left_to_right_viewer">Сулахайран сылтӑмалла</string>
@@ -275,6 +278,11 @@
     <string name="cover_updated">Хуплашкана ҫӗнетнӗ</string>
     <string name="set_as_cover">Хуплашка пек ларт</string>
     <string name="obsolete_extension_message">Ҫак хушмана урӑх кӗме май ҫук.</string>
+    <string name="untrusted_extension_message">Ку хушмана шанчӑклӑ мар ӗнентерӳ хучӗпе алӑ пуснӑ тата ӑна пуҫарман.
+\n
+\nСийенлӗ хушма Tachiyomi-ри упранакан кирек мӗнле шут пӗлӗмӗсене шута илме йе хӑй ирӗклӗ йума пурнӑҫлама пултарать.
+\n
+\nҪак ӗнентерӳ хутне шаннипе есӗ ҫав теветкеле йышӑнатӑн.</string>
     <string name="untrusted_extension">Шанчӑклӑ мар хушма</string>
     <string name="local_source_help_guide">Вырӑнти ҫӑл куҫ ертӳлӗхӗ</string>
     <string name="in_library">Вулавăшра</string>
@@ -352,9 +360,7 @@
     <string name="unlock_library">Вулавӑша уҫма ҫаклату салт</string>
     <string name="tracked">Сӑнавланакан</string>
     <string name="last_used">Юлашки усӑ курни</string>
-    <string name="unofficial_extension_message">Ҫак хушма Tachiyomi-н ӗҫ йӗркиллӗ хушмасен йат-йышне кӗмест.</string>
     <string name="nsfw_short">18+</string>
-    <string name="unofficial">Официаллӑ мар</string>
     <string name="may_contain_nsfw">NSFW (18+) шалаш пулма пултарать</string>
     <string name="automatic_backups">Хӑй-халлӗн янтӑвлани</string>
     <string name="invalid_backup_file">Тӗрӗс мар янтӑв файлӗ</string>
@@ -502,4 +508,6 @@
     <string name="gray_background">Сӑрӑ</string>
     <string name="ext_installer_pref">Ларткӑч</string>
     <string name="library_entries">Вулавӑшри серилӗхсем</string>
+    <string name="clear_database_summary">Санӑн вулавӑшра упранман манкӑн вуланӑ кун-ҫулне катерт</string>
+    <string name="trackers">Сервиссем</string>
 </resources>

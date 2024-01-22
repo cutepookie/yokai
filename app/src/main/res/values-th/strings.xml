@@ -95,6 +95,11 @@
     <string name="untrusted">ไม่น่าเชื่อถือ</string>
     <string name="uninstall">ถอนการติดตั้ง</string>
     <string name="untrusted_extension">ส่วนขยายที่ไม่น่าเชื่อถือ</string>
+    <string name="untrusted_extension_message">ส่วนขยายนี้ลงนามด้วยใบรับรองที่ไม่น่าเชื่อถือและจะไม่ถูกเปิดใช้งาน
+\n
+\nส่วนขยายที่เป็นอันตรายสามารถอ่านข้อมูลการเข้าสู่ระบบที่จัดเก็บไว้ใน Tachiyomi หรือเรียกใช้โค้ดโดยอำเภอใจ
+\n
+\nการเชื่อถือใบรับรองนี้แสดงว่าคุณยอมรับความเสี่ยงเหล่านี้</string>
     <string name="version_">เวอร์ชัน: %1$s</string>
     <string name="fullscreen">เต็มหน้าจอ</string>
     <string name="double_tap_anim_speed">ความเร็วแอนิเมชั่นเมื่อแตะ 2 ครั้ง</string>
@@ -108,6 +113,7 @@
     <string name="left_to_right_viewer">จากซ้ายไปขวา</string>
     <string name="right_to_left_viewer">จากขวาไปซ้าย</string>
     <string name="vertical_viewer">แนวตั้ง</string>
+    <string name="webtoon">เว็บตูน</string>
     <string name="scale_type">ชนิดมาตราส่วน</string>
     <string name="fit_screen">พอดีกับหน้าจอ</string>
     <string name="stretch">ยืด</string>
@@ -294,17 +300,16 @@
 \nควรลงท้ายด้วย .proto.gz หรือ .json</string>
     <string name="invalid_backup_file">ข้อมูลสำรองไม่ถูกต้อง</string>
     <string name="disabled">ปิดการใช้งาน</string>
-    <string name="long_strip_side_padding_25">25%</string>
-    <string name="long_strip_side_padding_20">20%</string>
-    <string name="long_strip_side_padding_15">15%</string>
-    <string name="long_strip_side_padding_10">10%</string>
-    <string name="long_strip_side_padding_0">ไม่มี</string>
-    <string name="pref_long_strip_side_padding">ช่องว่างด้านข้าง</string>
+    <string name="webtoon_side_padding_25">25%</string>
+    <string name="webtoon_side_padding_20">20%</string>
+    <string name="webtoon_side_padding_15">15%</string>
+    <string name="webtoon_side_padding_10">10%</string>
+    <string name="webtoon_side_padding_0">ไม่มี</string>
+    <string name="pref_webtoon_side_padding">ช่องว่างด้านข้าง</string>
     <string name="right_and_left_nav">ขวาและซ้าย</string>
     <string name="edge_nav">ขอบ</string>
     <string name="kindlish_nav">เหมือน Kindle</string>
     <string name="l_nav">รูปตัว L</string>
-    <string name="unofficial_extension_message">ส่วนขยายนี้ไม่ได้มาจากรายการส่วนขยายทางการของ Tachiyomi</string>
     <string name="obsolete_extension_message">ส่วนขยายนี้ไม่สามารถใช้ได้อีกต่อไป</string>
     <string name="none">ไม่มี</string>
     <string name="landscape">แนวนอน</string>
@@ -344,7 +349,6 @@
     <string name="webview_is_required">Tachiyomi จำเป็นต้องใช้ WebView</string>
     <string name="name">ชื่อ</string>
     <string name="no_pages_found">ไม่พบหน้า</string>
-    <string name="unofficial">ไม่เป็นทางการ</string>
     <string name="animate_page_transitions">แสดงแอนิเมชั่นเมื่อเปลี่ยนหน้า</string>
     <string name="last_used">ใช้ล่าสุด</string>
     <string name="check_site_in_web">ตรวจสอบเว็บไซต์ใน WebView</string>
@@ -416,7 +420,7 @@
     <string name="about_dont_kill_my_app">ผู้ผลิตบางรายมีข้อจำกัดเพิ่มเติมของแอปที่ปิดบริการพื้นหลัง เว็บไซต์นี้มีข้อมูลเพิ่มเติมเกี่ยวกับวิธีการแก้ไข</string>
     <string name="download_queue_size_warning">คำเตือน: การดาวน์โหลดจำนวนมากอาจทำให้แหล่งที่มาทำงานช้าลงและ/หรือปิดกั้น Tachiyomi แตะเพื่อเรียนรู้เพิ่มเติม</string>
     <string name="ext_installer_shizuku_unavailable_dialog">ติดตั้งและเริ่ม Shizuku เพื่อใช้ Shizuku เป็นตัวติดตั้งส่วนขยาย</string>
-    <string name="help_translate">แปลเป็นภาษาไทยโดย altinat</string>
+    <string name="help_translate">แปลเป็นภาษาไทยโดย altqx</string>
     <string name="cover_saved">บันทึกปกแล้ว</string>
     <string name="error_saving_cover">ผิดพลาดในการบันทึกปก</string>
     <string name="error_sharing_cover">ผิดพลาดในการแบ่งปันปก</string>
@@ -692,6 +696,7 @@
     </plurals>
     <string name="set_as_default_for_all">ตั้งเป็นค่าเริ่มต้นสำหรับทั้งหมด</string>
     <string name="pages_">หน้า %1$s</string>
+    <string name="webtoon_style">สไตล์เว็บตูน</string>
     <string name="set_first_page_as_cover">ตั้งหน้าแรกเป็นหน้าปก</string>
     <string name="share_first_page">แบ่งปันหน้าแรก</string>
     <string name="save_first_page">บันทึกหน้าแรก</string>
@@ -846,6 +851,7 @@
     <string name="uniform_grid_covers">แสดงปกในตารางให้สม่ำเสมอ</string>
     <string name="tag">แท็ก</string>
     <string name="amount_of_pages_to_preload">จำนวนหน้าที่จะโหลดล่วงหน้าเมื่ออ่าน ค่าที่สูงขึ้นจะส่งผลให้ประสบการณ์การอ่านราบรื่นขึ้น แต่จะต้องใช้พื้นที่แคชและเครือข่ายที่มากขึ้น</string>
+    <string name="crop_borders_webtoon">ตัดขอบ (เว็บตูน)</string>
     <string name="smart_by_theme">อัตโนมัติ (ตามธีม)</string>
     <string name="ignore_cutout_areas">ไม่สนใจพื้นที่ที่ตัดออก</string>
     <string name="cutout_behavior_only_applies">ลักษณะการทำงานของพื้นที่ที่ตัดออกจะใช้ได้เฉพาะในโหมดแนวตั้งตามขนาดที่กำหนด</string>
@@ -965,7 +971,7 @@
     <string name="tap_zones">โซนการแตะ</string>
     <string name="lavender">ลาเวนเดอร์</string>
     <string name="violet">ไวโอเล็ต</string>
-    <string name="long_strip_side_padding_5">5%</string>
+    <string name="webtoon_side_padding_5">5%</string>
     <string name="user_agent_string">ตัวแทนผู้ใช้เริ่มต้น</string>
     <string name="language_requires_app_restart">บางภาษาอาจจำเป็นต้องปิดเปิดแอปใหม่ เพื่อให้แสดงได้อย่างถูกต้อง</string>
     <string name="loader_rar5_error">ไม่รับรองรูปแบบ RARv5</string>
@@ -1037,4 +1043,7 @@
     <string name="app_settings">การตั้งค่าแอป</string>
     <string name="pref_debug_info">ข้อมูลดีบัก</string>
     <string name="label_background_activity">กิจกรรมเบื้องหลัง</string>
+    <string name="share_cover">แบ่งปันหน้าปก</string>
+    <string name="save_pages_separately">บันทึกแต่ละหน้าลงในโฟลเดอร์แยกต่างหาก</string>
+    <string name="create_folders_by_manga_title">สร้างโฟลเดอร์ตามชื่อของมังงะ</string>
 </resources>

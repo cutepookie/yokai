@@ -6,12 +6,11 @@ import android.os.Build
 import android.provider.Settings
 import androidx.preference.PreferenceScreen
 import androidx.preference.SwitchPreferenceCompat
-import dev.yokai.presentation.extension.repo.ExtensionRepoController
 import eu.kanade.tachiyomi.BuildConfig
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.notification.Notifications
 import eu.kanade.tachiyomi.data.preference.PreferenceKeys
-import eu.kanade.tachiyomi.data.preference.changesIn
+import eu.kanade.tachiyomi.data.preference.asImmediateFlowIn
 import eu.kanade.tachiyomi.data.updater.AppDownloadInstallJob
 import eu.kanade.tachiyomi.extension.ExtensionManager
 import eu.kanade.tachiyomi.extension.ExtensionUpdateJob
@@ -19,7 +18,7 @@ import eu.kanade.tachiyomi.extension.util.ExtensionInstaller
 import eu.kanade.tachiyomi.source.SourceManager
 import eu.kanade.tachiyomi.ui.main.MainActivity
 import eu.kanade.tachiyomi.ui.migration.MigrationController
-import eu.kanade.tachiyomi.util.lang.addBetaTag
+import eu.kanade.tachiyomi.ui.source.browse.repos.RepoController
 import eu.kanade.tachiyomi.util.view.snack
 import eu.kanade.tachiyomi.util.view.withFadeTransaction
 import uy.kohesive.injekt.injectLazy
@@ -41,10 +40,6 @@ class SettingsBrowseController : SettingsController() {
 
         preferenceCategory {
             titleRes = R.string.extensions
-            preference {
-                title = context.getString(R.string.source_repos).addBetaTag(context)
-                onClick { router.pushController(ExtensionRepoController().withFadeTransaction()) }
-            }
             switchPreference {
                 key = PreferenceKeys.automaticExtUpdates
                 titleRes = R.string.check_for_extension_updates
@@ -55,6 +50,15 @@ class SettingsBrowseController : SettingsController() {
                     ExtensionUpdateJob.setupTask(context, it)
                     true
                 }
+            }
+            preference {
+                key = "pref_edit_extension_repos"
+
+                val repoCount = preferences.extensionRepos().get().count()
+                titleRes = R.string.extension_repos
+                if (repoCount > 0) summary = context.resources.getQuantityString(R.plurals.num_repos, repoCount, repoCount)
+
+                onClick { router.pushController(RepoController().withFadeTransaction()) }
             }
             if (ExtensionManager.canAutoInstallUpdates()) {
                 val intPref = intListPreference(activity) {
@@ -101,7 +105,7 @@ class SettingsBrowseController : SettingsController() {
                 } else {
                     null
                 }
-                preferences.automaticExtUpdates().changesIn(viewScope) { value ->
+                preferences.automaticExtUpdates().asImmediateFlowIn(viewScope) { value ->
                     arrayOf(intPref, infoPref, switchPref).forEach { it?.isVisible = value }
                 }
             }

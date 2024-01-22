@@ -70,6 +70,7 @@
     <string name="left_to_right_viewer">Esquerda para a direita</string>
     <string name="right_to_left_viewer">Direita para a esquerda</string>
     <string name="vertical_viewer">Vertical</string>
+    <string name="webtoon">Webtoon</string>
     <string name="scale_type">Tipo de escala</string>
     <string name="fit_screen">Ajustar ao ecrã</string>
     <string name="stretch">Esticar</string>
@@ -180,7 +181,7 @@
     <string name="could_not_download_unexpected_error">Erro inesperado ao transferir capítulo</string>
     <string name="no_wifi_connection">Sem ligação de Wi-Fi disponível</string>
     <string name="categories">Categorias</string>
-    <string name="manga">Manga</string>
+    <string name="manga">Mangá</string>
     <string name="tracking">Manutenção</string>
     <string name="history">Histórico</string>
     <string name="extensions">Extensões</string>
@@ -211,6 +212,11 @@
     <string name="installed">Instalado</string>
     <string name="uninstall">Desinstalar</string>
     <string name="untrusted_extension">Extensão não confiável</string>
+    <string name="untrusted_extension_message">Esta extensão possui um certificado não confiável e não foi ativada.
+\n
+\nUma extensão maliciosa podia ler qualquer credencial de entrada armazenada no Tachiyomi ou executar código arbitrário.
+\n
+\nAo confiar neste certificado serão aceites estes riscos.</string>
     <string name="version_">Versão: %1$s</string>
     <string name="language_">Linguagem: %1$s</string>
     <string name="crop_borders">Cortar bordas</string>
@@ -321,12 +327,12 @@
     <string name="continuous_vertical">Vertical contínuo</string>
     <string name="paged">Paginação</string>
     <string name="always_show_chapter_transition">Mostrar sempre transição entre capítulos</string>
-    <string name="pref_long_strip_side_padding">Preenchimento lateral</string>
-    <string name="long_strip_side_padding_0">Nenhum</string>
-    <string name="long_strip_side_padding_10">10%</string>
-    <string name="long_strip_side_padding_15">15%</string>
-    <string name="long_strip_side_padding_20">20%</string>
-    <string name="long_strip_side_padding_25">25%</string>
+    <string name="pref_webtoon_side_padding">Preenchimento lateral</string>
+    <string name="webtoon_side_padding_0">Nenhum</string>
+    <string name="webtoon_side_padding_10">10%</string>
+    <string name="webtoon_side_padding_15">15%</string>
+    <string name="webtoon_side_padding_20">20%</string>
+    <string name="webtoon_side_padding_25">25%</string>
     <string name="chapters_">Capítulos %1$s</string>
     <string name="remove_from_library">Remover da biblioteca</string>
     <string name="refresh_tracking">Atualizar monitorização</string>
@@ -433,9 +439,7 @@
     <string name="myanimelist_relogin">Por favor inicie sessão no MAL novamente</string>
     <string name="no_chapters_error">Nenhum capítulo encontrado</string>
     <string name="last_used">Último usado</string>
-    <string name="unofficial_extension_message">Esta extensão não vem da lista oficial de extensões do Tachiyomi.</string>
     <string name="nsfw_short">18+</string>
-    <string name="unofficial">Não oficial</string>
     <string name="may_contain_nsfw">Pode conter conteúdo NSFW (18+)</string>
     <string name="next_page">Página seguinte</string>
     <string name="previous_page">Página anterior</string>
@@ -757,6 +761,7 @@
     <string name="smart_by_theme">Inteligente (por tema)</string>
     <string name="smart_by_page">Inteligente (por página)</string>
     <string name="remove_crop">Remover corte</string>
+    <string name="crop_borders_webtoon">Aparar bordas (Webtoon)</string>
     <string name="crop_borders_paged">Aparar páginas (Paginado)</string>
     <string name="invert_double_pages">Inverter páginas duplas</string>
     <string name="amount_of_pages_to_preload">A quantidade de páginas a pré-carregar enquanto lê. Valores maiores resultarão numa experiência de leitura melhor, ao custo do uso de cache e rede mais alto.</string>
@@ -770,6 +775,7 @@
     <string name="save_first_page">Salvar primeira página</string>
     <string name="share_first_page">Compartilhar primeira página</string>
     <string name="set_first_page_as_cover">Definir primeira página como capa</string>
+    <string name="webtoon_style">estilo webtoon</string>
     <string name="reading_">Lendo %1$s</string>
     <string name="changing_will_reset_reading_mode">Mudar isto redefinirá o modo de leitura para esta série</string>
     <string name="reading_mode">Modo de leitura</string>
@@ -1015,7 +1021,7 @@
     <string name="split_tall_images">Dividir Imagens altas</string>
     <string name="split_tall_images_summary">Melhora o desempenho do leitor</string>
     <string name="tap_zones">Zonas de toque</string>
-    <string name="long_strip_side_padding_5">5%</string>
+    <string name="webtoon_side_padding_5">5%</string>
     <string name="loader_rar5_error">O formato RARv5 não é suportado</string>
     <string name="downloaded_chapters">Capítulos transferidos</string>
     <string name="auto_download_while_reading">Transferência automática durante leitura</string>

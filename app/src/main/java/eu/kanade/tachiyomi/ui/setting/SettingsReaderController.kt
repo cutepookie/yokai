@@ -7,7 +7,8 @@ import androidx.core.content.getSystemService
 import androidx.preference.PreferenceScreen
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.preference.PreferenceValues
-import eu.kanade.tachiyomi.data.preference.changesIn
+import eu.kanade.tachiyomi.data.preference.asImmediateFlow
+import eu.kanade.tachiyomi.data.preference.asImmediateFlowIn
 import eu.kanade.tachiyomi.ui.reader.settings.OrientationType
 import eu.kanade.tachiyomi.ui.reader.settings.PageLayout
 import eu.kanade.tachiyomi.ui.reader.settings.ReaderBackgroundColor
@@ -17,6 +18,7 @@ import eu.kanade.tachiyomi.ui.reader.viewer.ViewerNavigation
 import eu.kanade.tachiyomi.util.lang.addBetaTag
 import eu.kanade.tachiyomi.util.system.isTablet
 import eu.kanade.tachiyomi.util.view.activityBinding
+import kotlinx.coroutines.flow.launchIn
 import eu.kanade.tachiyomi.data.preference.PreferenceKeys as Keys
 
 class SettingsReaderController : SettingsController() {
@@ -275,23 +277,23 @@ class SettingsReaderController : SettingsController() {
                 defaultValue = PageLayout.AUTOMATIC.value
             }
             infoPreference(R.string.automatic_can_still_switch).apply {
-                preferences.pageLayout().changesIn(viewScope) { isVisible = it == PageLayout.AUTOMATIC.value }
+                preferences.pageLayout().asImmediateFlowIn(viewScope) { isVisible = it == PageLayout.AUTOMATIC.value }
             }
             switchPreference {
                 key = Keys.automaticSplitsPage
                 titleRes = R.string.split_double_pages_portrait
                 defaultValue = false
-                preferences.pageLayout().changesIn(viewScope) { isVisible = it == PageLayout.AUTOMATIC.value }
+                preferences.pageLayout().asImmediateFlowIn(viewScope) { isVisible = it == PageLayout.AUTOMATIC.value }
             }
             switchPreference {
                 key = Keys.invertDoublePages
                 titleRes = R.string.invert_double_pages
                 defaultValue = false
-                preferences.pageLayout().changesIn(viewScope) { isVisible = it != PageLayout.SINGLE_PAGE.value }
+                preferences.pageLayout().asImmediateFlowIn(viewScope) { isVisible = it != PageLayout.SINGLE_PAGE.value }
             }
         }
         preferenceCategory {
-            titleRes = R.string.long_strip
+            titleRes = R.string.webtoon
 
             intListPreference(activity) {
                 key = Keys.navigationModeWebtoon
@@ -333,14 +335,14 @@ class SettingsReaderController : SettingsController() {
 
             intListPreference(activity) {
                 key = Keys.webtoonSidePadding
-                titleRes = R.string.pref_long_strip_side_padding
+                titleRes = R.string.pref_webtoon_side_padding
                 entriesRes = arrayOf(
-                    R.string.long_strip_side_padding_0,
-                    R.string.long_strip_side_padding_5,
-                    R.string.long_strip_side_padding_10,
-                    R.string.long_strip_side_padding_15,
-                    R.string.long_strip_side_padding_20,
-                    R.string.long_strip_side_padding_25,
+                    R.string.webtoon_side_padding_0,
+                    R.string.webtoon_side_padding_5,
+                    R.string.webtoon_side_padding_10,
+                    R.string.webtoon_side_padding_15,
+                    R.string.webtoon_side_padding_20,
+                    R.string.webtoon_side_padding_25,
                 )
                 entryValues = listOf(0, 5, 10, 15, 20, 25)
                 defaultValue = "0"
@@ -381,7 +383,7 @@ class SettingsReaderController : SettingsController() {
                 titleRes = R.string.invert_volume_keys
                 defaultValue = false
 
-                preferences.readWithVolumeKeys().changesIn(viewScope) { isVisible = it }
+                preferences.readWithVolumeKeys().asImmediateFlow { isVisible = it }.launchIn(viewScope)
             }
         }
 

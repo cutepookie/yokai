@@ -24,8 +24,8 @@ import com.google.android.material.snackbar.Snackbar
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
 import eu.kanade.tachiyomi.data.preference.SharedPreferencesDataStore
-import eu.kanade.tachiyomi.core.preference.minusAssign
-import eu.kanade.tachiyomi.core.preference.plusAssign
+import eu.kanade.tachiyomi.data.preference.minusAssign
+import eu.kanade.tachiyomi.data.preference.plusAssign
 import eu.kanade.tachiyomi.databinding.ExtensionDetailControllerBinding
 import eu.kanade.tachiyomi.extension.model.Extension
 import eu.kanade.tachiyomi.network.NetworkHelper
@@ -108,9 +108,9 @@ class ExtensionDetailsController(bundle: Bundle? = null) :
 
         val multiSource = extension.sources.size > 1
         val isMultiLangSingleSource = multiSource && extension.sources.map { it.name }.distinct().size == 1
-        val languages = preferences.enabledLanguages().get()
+        val langauges = preferences.enabledLanguages().get()
 
-        for (source in extension.sources.sortedByDescending { it.isLangEnabled(languages) }) {
+        for (source in extension.sources.sortedByDescending { it.isLangEnabled(langauges) }) {
             addPreferencesForSource(screen, source, multiSource, isMultiLangSingleSource)
         }
 
@@ -152,6 +152,7 @@ class ExtensionDetailsController(bundle: Bundle? = null) :
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.extension_details, menu)
+        menu.findItem(R.id.action_open_repo)?.isVisible = presenter.extension?.repoUrl != null
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -160,19 +161,6 @@ class ExtensionDetailsController(bundle: Bundle? = null) :
             R.id.action_clear_cookies -> clearCookies()
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    private fun openRepo() {
-        val url = getUrl(presenter.extension?.repoUrl)
-        openInBrowser(url)
-    }
-
-    private fun getUrl(repoUrl: String?): String? {
-        val regex = """https://raw.githubusercontent.com/(.+?)/(.+?)/.+""".toRegex()
-        return regex.find(repoUrl.orEmpty())?.let {
-            val (user, repo) = it.destructured
-            "https://github.com/$user/$repo"
-        } ?: repoUrl
     }
 
     private fun clearCookies() {
@@ -188,6 +176,28 @@ class ExtensionDetailsController(bundle: Bundle? = null) :
         Timber.d("Cleared $cleared cookies for: ${urls.joinToString()}")
         val context = view?.context ?: return
         binding.coordinator.snack(context.getString(R.string.cookies_cleared))
+    }
+
+    private fun openRepo() {
+        val regex = """https://(?:raw.githubusercontent.com|github.com)/(.+?)/(.+?)/.+""".toRegex()
+        val url = regex.find(presenter.extension?.repoUrl.orEmpty())
+            ?.let {
+                val (user, repo) = it.destructured
+                "https://github.com/$user/$repo"
+            }
+            ?: presenter.extension?.repoUrl ?: return
+        openInBrowser(url)
+    }
+
+    private fun createUrl(url: String, pkgName: String, pkgFactory: String?, path: String = ""): String {
+        return if (!pkgFactory.isNullOrEmpty()) {
+            when (path.isEmpty()) {
+                true -> "$url/multisrc/src/main/java/eu/kanade/tachiyomi/multisrc/$pkgFactory"
+                else -> "$url/multisrc/overrides/$pkgFactory/" + (pkgName.split(".").lastOrNull() ?: "") + path
+            }
+        } else {
+            url + "/src/" + pkgName.replace(".", "/") + path
+        }
     }
 
     private fun addPreferencesForSource(screen: PreferenceScreen, source: Source, isMultiSource: Boolean, isMultiLangSingleSource: Boolean) {
@@ -229,7 +239,7 @@ class ExtensionDetailsController(bundle: Bundle? = null) :
             }
 
             // React to enable/disable all changes
-            preferences.hiddenSources().changes()
+            preferences.hiddenSources().asFlow()
                 .onEach {
                     val enabled = source.isEnabled()
                     isChecked = enabled
@@ -358,5 +368,9 @@ class ExtensionDetailsController(bundle: Bundle? = null) :
     private companion object {
         const val PKGNAME_KEY = "pkg_name"
         const val LASTOPENPREFERENCE_KEY = "last_open_preference"
+        private const val URL_EXTENSION_BLOB =
+            "https://github.com/tachiyomiorg/tachiyomi-extensions/blob/master"
+        private const val URL_EXTENSION_COMMITS =
+            "https://github.com/tachiyomiorg/tachiyomi-extensions/commits/master"
     }
 }

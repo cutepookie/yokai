@@ -89,6 +89,11 @@
     <string name="untrusted">Opålitlig</string>
     <string name="uninstall">Avinstallera</string>
     <string name="untrusted_extension">Opålitlig extension</string>
+    <string name="untrusted_extension_message">Detta tillägg tecknades med ett otillförlitligt certifikat och var inte aktiverat.
+\n
+\nEtt skadligt tillägg kan läsa inloggningsuppgifter som är lagrade i Tachiyomi eller utföra godtycklig kod.
+\n
+\nGenom att lita på detta certifikat accepterar du dessa risker.</string>
     <string name="version_">Version: %1$s</string>
     <string name="language_">Språk: %1$s</string>
     <string name="fullscreen">Fullskärm</string>
@@ -107,6 +112,7 @@
     <string name="left_to_right_viewer">Vänster till höger</string>
     <string name="right_to_left_viewer">Höger till vänster</string>
     <string name="vertical_viewer">Vertikal</string>
+    <string name="webtoon">Webbtoon</string>
     <string name="scale_type">Skal typ</string>
     <string name="fit_screen">Passa skärmen</string>
     <string name="stretch">Sträck ut</string>
@@ -297,12 +303,12 @@
     <string name="continuous_vertical">Kontinuerlig vertikal</string>
     <string name="paged">Sidläsare</string>
     <string name="always_show_chapter_transition">Visa alltid kapitelövergång</string>
-    <string name="pref_long_strip_side_padding">Sidofyllning</string>
-    <string name="long_strip_side_padding_0">Ingen</string>
-    <string name="long_strip_side_padding_10">10 %</string>
-    <string name="long_strip_side_padding_15">15 %</string>
-    <string name="long_strip_side_padding_20">20 %</string>
-    <string name="long_strip_side_padding_25">25 %</string>
+    <string name="pref_webtoon_side_padding">Sidofyllning</string>
+    <string name="webtoon_side_padding_0">Ingen</string>
+    <string name="webtoon_side_padding_10">10 %</string>
+    <string name="webtoon_side_padding_15">15 %</string>
+    <string name="webtoon_side_padding_20">20 %</string>
+    <string name="webtoon_side_padding_25">25 %</string>
     <string name="chapters_">Kapitlen %1$s</string>
     <string name="remove_from_library">Ta bort från biblioteket</string>
     <string name="refresh_tracking">Uppdatera spårning</string>
@@ -363,9 +369,7 @@
     <string name="open_log">Öppna logg</string>
     <string name="no_chapters_error">Inga kapitel hittades</string>
     <string name="last_used">Senast använd</string>
-    <string name="unofficial_extension_message">Detta tillägg kommer inte från den officiella Tachiyomi-tilläggslistan.</string>
     <string name="nsfw_short">18+</string>
-    <string name="unofficial">Inofficiell</string>
     <string name="may_contain_nsfw">Kan innehålla NSFW(18+) innehåll</string>
     <string name="next_page">Nästa sida</string>
     <string name="previous_page">Föregående sida</string>
@@ -484,6 +488,7 @@
     <string name="smart_by_theme">Smart (efter tema)</string>
     <string name="smart_by_page">Smart (per sida)</string>
     <string name="enable_zoom_out">Aktivera utzoomning</string>
+    <string name="webtoon_style">webtoon-stil</string>
     <string name="reading_">Läser %1$s</string>
     <string name="set_as_default_for_all">Ange som standard för alla</string>
     <string name="reader_settings">Läsinställningar</string>
@@ -732,6 +737,7 @@
     <string name="turn_off_">Stäng av %s</string>
     <string name="turn_on_">Slå på %s</string>
     <string name="remove_crop">Ta bort beskärning</string>
+    <string name="crop_borders_webtoon">Beskära kantlinjer (Webtoon)</string>
     <string name="crop_borders_paged">Beskära kantlinjer (sida vid sida)</string>
     <string name="changing_will_reset_reading_mode">Om du ändrar detta återställs läsläget för denna serie</string>
     <string name="reading_mode">Läsläge</string>
@@ -987,7 +993,7 @@
     <string name="tap_zones">Tryckzoner</string>
     <string name="lavender">Lavendel</string>
     <string name="violet">Violett</string>
-    <string name="long_strip_side_padding_5">5%</string>
+    <string name="webtoon_side_padding_5">5%</string>
     <string name="user_agent_string">Standardsträng för användaragent</string>
     <string name="loader_rar5_error">RARv5 formatet stöds inte</string>
     <string name="downloaded_chapters">Nedladdade kapitel</string>
@@ -1063,4 +1069,7 @@
     <string name="app_settings">Appinställningar</string>
     <string name="pref_debug_info">Felsökningsinformation</string>
     <string name="label_background_activity">Bakgrundsaktivitet</string>
+    <string name="share_cover">Dela omslag</string>
+    <string name="save_pages_separately">Spara sidor i separata mappar</string>
+    <string name="create_folders_by_manga_title">Skapar mappar enligt manga titel</string>
 </resources>

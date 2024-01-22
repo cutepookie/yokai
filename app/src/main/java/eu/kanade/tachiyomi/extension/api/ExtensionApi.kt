@@ -1,7 +1,7 @@
 package eu.kanade.tachiyomi.extension.api
 
 import android.content.Context
-import dev.yokai.domain.source.SourcePreferences
+import eu.kanade.tachiyomi.data.preference.PreferencesHelper
 import eu.kanade.tachiyomi.extension.ExtensionManager
 import eu.kanade.tachiyomi.extension.model.Extension
 import eu.kanade.tachiyomi.extension.model.LoadResult
@@ -22,11 +22,11 @@ internal class ExtensionApi {
 
     private val json: Json by injectLazy()
     private val networkService: NetworkHelper by injectLazy()
-    private val sourcePreferences: SourcePreferences by injectLazy()
+    private val preferences: PreferencesHelper by injectLazy()
 
     suspend fun findExtensions(): List<Extension.Available> {
         return withIOContext {
-            val repos = sourcePreferences.extensionRepos().get()
+            val repos = preferences.extensionRepos().get()
             if (repos.isEmpty()) {
                 return@withIOContext emptyList()
             }
@@ -40,9 +40,7 @@ internal class ExtensionApi {
         }
     }
 
-    private suspend fun getExtensions(
-        repoBaseUrl: String,
-    ): List<Extension.Available> {
+    private suspend fun getExtensions(repoBaseUrl: String): List<Extension.Available> {
         return try {
             val response = networkService.client
                 .newCall(GET("$repoBaseUrl/index.min.json"))
@@ -127,7 +125,5 @@ private data class ExtensionJsonObject(
     val code: Long,
     val version: String,
     val nsfw: Int,
-    val hasReadme: Int = 0,
-    val hasChangelog: Int = 0,
     val sources: List<Extension.AvailableSource>?,
 )

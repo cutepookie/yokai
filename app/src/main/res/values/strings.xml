@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Yōkai</string>
-    <string name="app_short_name" translatable="false">Yōkai</string>
-    <string name="app_name_prod" translatable="false">Yōkai</string>
-    <string name="app_name_normalized" translatable="false">Yokai</string>
+    <string name="app_name" translatable="false">TachiyomiJ2K</string>
+    <string name="app_short_name" translatable="false">TachiJ2K</string>
 
     <string name="all_files_permission_required">File permissions required</string>
     <string name="external_storage_permission_notice">TachiyomiJ2K requires access to all files in Android 11 to download chapters, create automatic backups, and read local series. \n\nOn the next screen, enable \"Allow access to manage all files.\"</string>
@@ -16,6 +14,7 @@
     <string name="manhwa">Manhwa</string>
     <string name="manhua">Manhua</string>
     <string name="comic">Comic</string>
+    <string name="webtoon">Webtoon</string>
 
     <!-- Series -->
     <string name="library_entries">Library entries</string>
@@ -334,14 +333,13 @@
     <string name="ext_installer_private" translatable="false">Private</string>
     <string name="ext_installer_summary">Allows extensions to be installed without user prompts and enables automatic updates for devices under Android 12</string>
     <string name="untrusted_extension">Untrusted extension</string>
-    <string name="untrusted_extension_message">Malicious extensions can read any stored login credentials or execute arbitrary code.\n\nBy trusting this extension you accept these risks.</string>
+    <string name="untrusted_extension_message">Malicious extensions can read any stored login credentials or execute arbitrary code.\n\nBy trusting this extension, you accept these risks.</string>
     <string name="obsolete_extension_message">This extension is no longer available.</string>
-    <string name="unofficial_extension_message">This extension is not from the official Tachiyomi extensions list.</string>
+    <string name="extension_api_error">Failed to fetch available extensions</string>
     <string name="version_">Version: %1$s</string>
     <string name="language_">Language: %1$s</string>
     <string name="nsfw_short">18+</string>
     <string name="installed_">Installed %1$s</string>
-    <string name="unofficial">Unofficial</string>
     <string name="extensions_miui_warning">MIUI Optimization must be disabled to install extensions.</string>
     <string name="may_contain_nsfw">May contain NSFW (18+) content</string>
     <string name="app_info">App info</string>
@@ -363,7 +361,24 @@
         <item quantity="one">Extension update available</item>
         <item quantity="other">%d extension updates available</item>
     </plurals>
-    <string name="action_revoke_all_extensions">Revoke all trusted extensions</string>
+    <string name="ext_revoke_trust">Revoke trusted unknown extensions</string>
+    <string name="open_source_repo">Open source repo</string>
+
+    <!-- Extension Repos -->
+    <string name="action_add_repo">Add repo</string>
+    <string name="action_add_repo_message">Add additional repos to Tachiyomi. This should be a URL that ends with \"index.min.json\"</string>
+    <string name="extension_repos">Extension repos</string>
+    <plurals name="num_repos">
+        <item quantity="one">%d repo</item>
+        <item quantity="other">%d repos</item>
+    </plurals>
+    <string name="error_repo_exists">This repo already exists!</string>
+    <string name="repo_cannot_be_blank">Repo name cannot be blank</string>
+    <string name="snack_repo_deleted">Repo deleted</string>
+    <string name="invalid_repo_name">Invalid repo name</string>
+    <string name="confirm_repo_deletion">Delete repo</string>
+    <string name="delete_repo_confirmation">Do you wish to delete the repo \"%s\"?</string>
+    <string name="url_not_set_click_again">Repo URL not set, please edit the URL</string>
 
     <!-- Reader -->
     <string name="set_as_cover">Set as cover</string>
@@ -386,7 +401,7 @@
     <string name="loading_pages">Loading pages…</string>
     <string name="failed_to_load_pages_">Failed to load pages: %1$s</string>
     <string name="reading_">Reading %1$s</string>
-    <string name="long_strip">Long strip</string>
+    <string name="webtoon_style">webtoon style</string>
     <string name="next_page">Next page</string>
     <string name="previous_page">Previous page</string>
     <string name="next_chapter">Next chapter</string>
@@ -420,7 +435,7 @@
     <string name="split_double_pages_portrait">Split double pages in portrait</string>
     <string name="crop_borders">Crop borders</string>
     <string name="crop_borders_paged">Crop borders (Paged)</string>
-    <string name="crop_borders_long_strip">Crop borders (Long strip)</string>
+    <string name="crop_borders_webtoon">Crop borders (Webtoon)</string>
     <string name="remove_crop">Remove crop</string>
     <string name="use_custom_brightness">Use custom brightness</string>
     <string name="grayscale">Grayscale</string>
@@ -478,13 +493,13 @@
     <string name="always_show_chapter_transition">Always show chapter transition</string>
     <string name="if_disabled_transition_will_skip">If disabled, the transition page will be
         skipped if the next chapter is loaded</string>
-    <string name="pref_long_strip_side_padding">Side padding</string>
-    <string name="long_strip_side_padding_0">None</string>
-    <string name="long_strip_side_padding_5">5%</string>
-    <string name="long_strip_side_padding_10">10%</string>
-    <string name="long_strip_side_padding_15">15%</string>
-    <string name="long_strip_side_padding_20">20%</string>
-    <string name="long_strip_side_padding_25">25%</string>
+    <string name="pref_webtoon_side_padding">Side padding</string>
+    <string name="webtoon_side_padding_0">None</string>
+    <string name="webtoon_side_padding_5">5%</string>
+    <string name="webtoon_side_padding_10">10%</string>
+    <string name="webtoon_side_padding_15">15%</string>
+    <string name="webtoon_side_padding_20">20%</string>
+    <string name="webtoon_side_padding_25">25%</string>
     <string name="l_nav">L shaped</string>
     <string name="kindlish_nav">Kindle-ish</string>
     <string name="edge_nav">Edge</string>
@@ -909,15 +924,6 @@
     <string name="show_in_sources_and_extensions">Show in sources and extensions lists</string>
     <string name="does_not_prevent_unofficial_nsfw">This does not prevent unofficial or potentially incorrectly flagged extensions from surfacing NSFW (18+) content within the app.</string>
 
-    <!-- Extension repos -->
-    <string name="source_repos">Extension Repos</string>
-    <string name="label_add_repo">Add new repo</string>
-    <string name="action_add_repo">Add repo</string>
-    <string name="invalid_repo_url">Invalid repo url</string>
-    <string name="information_empty_repos">You haven\'t added any repos yet.</string>
-    <string name="notice_delete_repo_title">Delete repo?</string>
-    <string name="notice_delete_repo">Are you sure you wish to delete the repo \"%s\"?</string>
-
     <!-- About section -->
     <string name="version">Version</string>
     <string name="build_time">Build time</string>
@@ -930,8 +936,6 @@
     <string name="helpful_translation_links">Helpful translation links</string>
     <string name="website">Website</string>
     <string name="open_source_licenses">Open source licenses</string>
-    <string name="action_open_repo">Open source repo</string>
-    <string name="open_in_browser_fail">Unable to open url</string>
 
     <!-- Login/Logout dialog -->
     <string name="log_in_to_">Log in to %1$s</string>
@@ -1199,6 +1203,4 @@
     <string name="view_chapters">View chapters</string>
     <string name="warning">Warning</string>
     <string name="wifi">Wi-Fi</string>
-    <string name="webcomic">Webcomic</string>
-    <string name="internal_error">Internal error: %s</string>
 </resources>

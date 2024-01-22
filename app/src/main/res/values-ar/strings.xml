@@ -93,6 +93,7 @@
     <string name="left_to_right_viewer">يسارًا فيمينًا</string>
     <string name="right_to_left_viewer">يمينًا فيسارًا</string>
     <string name="vertical_viewer">عموديٌّ</string>
+    <string name="webtoon">وِبتون</string>
     <string name="scale_type">نوع التحجيم</string>
     <string name="fit_screen">لائم الشاشة</string>
     <string name="stretch">مدِّد</string>
@@ -144,7 +145,7 @@
     <string name="cookies_cleared">تم محو ملفات تعريف الارتباط</string>
     <string name="clear_database">محو قاعدة البيانات</string>
     <string name="clear_database_summary">امسح سجلَّ المدخلات التي ليست محفوظةً في مكتبتك</string>
-    <string name="clear_database_confirmation">أمتأكِّد؟ إن فعلتَ خسرتَ الفصول المقروءة وسير القراءة</string>
+    <string name="clear_database_confirmation">أمتأكِّد؟ إن فعلتَ خسرتَ الفصول المقروءة و التقدم فى العنوانين الغير محفوظة فى المكتبة</string>
     <string name="clear_database_completed">تم حذف المدخلات</string>
     <string name="refresh_library_metadata">تحديث البيانات الوصفية للمكتبة</string>
     <string name="updates_covers_genres_desc">يحدِّث الغُلُف والأصناف والأوصاف وحالة المدخلات</string>
@@ -227,6 +228,11 @@
     <string name="untrusted">ذات ريبة</string>
     <string name="uninstall">أزل</string>
     <string name="untrusted_extension">إضافة ذات ريبة</string>
+    <string name="untrusted_extension_message">هذه اﻹضافة موقَّعة بشهادة ذات ريبة ولم تفعَّل.
+\n
+\nيمكن لأي إضافة خبيثة قراءة بيانات اعتماد تسجيل الدخول المخزَّنة في Tachiyomi أو تنفيذ تعليمات برمجية عشوائية.
+\n
+\nأنت تقبل هذه المخاطر إن وثقت بالشهادة.</string>
     <string name="version_">الإصدار: %1$s</string>
     <string name="language_">اللغة: %1$s</string>
     <string name="double_tap_anim_speed">سرعة تحريك الضغط المزدوج</string>
@@ -291,12 +297,12 @@
     <string name="pinned">المثبتة</string>
     <string name="reorder">إعادة ترتيب</string>
     <string name="always_show_chapter_transition">أظهر صفحة الانتقال بين الفصول دائمًا</string>
-    <string name="pref_long_strip_side_padding">الإزاحة الجانبية</string>
-    <string name="long_strip_side_padding_0">بلا</string>
-    <string name="long_strip_side_padding_10">١٠٪</string>
-    <string name="long_strip_side_padding_15">١٥٪</string>
-    <string name="long_strip_side_padding_20">٢٠٪</string>
-    <string name="long_strip_side_padding_25">٢٥٪</string>
+    <string name="pref_webtoon_side_padding">الإزاحة الجانبية</string>
+    <string name="webtoon_side_padding_0">بلا</string>
+    <string name="webtoon_side_padding_10">١٠٪</string>
+    <string name="webtoon_side_padding_15">١٥٪</string>
+    <string name="webtoon_side_padding_20">٢٠٪</string>
+    <string name="webtoon_side_padding_25">٢٥٪</string>
     <string name="chapters_">الفصول %1$s</string>
     <string name="remove_from_library">أزل من المكتبة</string>
     <string name="refresh_tracking">حدِّث بيانات التتبُّع</string>
@@ -542,6 +548,7 @@
     <string name="smart_by_theme">ذكيٌّ (حسب السمة)</string>
     <string name="smart_by_page">ذكيٌّ (حسب الصفحة)</string>
     <string name="enable_zoom_out">مكِّن التصغير</string>
+    <string name="webtoon_style">نمط الوِبتون</string>
     <string name="reading_">تُقرأ %1$s</string>
     <string name="set_as_default_for_all">عيِّنه مبدئيًا للكلِّ</string>
     <string name="extension_updates">تحديثات اﻹضافات</string>
@@ -628,9 +635,7 @@
     <string name="file_picker_error">لم يتم العثور على تطبيق منتقي الملفات</string>
     <string name="open_log">فتح السجل</string>
     <string name="badges">شارات</string>
-    <string name="unofficial_extension_message">هذه الإضافة ليست من قائمة إضافات Tachiyomi الرسمية.</string>
     <string name="nsfw_short">١٨+</string>
-    <string name="unofficial">غير رسمي</string>
     <string name="may_contain_nsfw">قد تحتوى على محتوًى خادش للحياء (١٨+)</string>
     <string name="started_reading_date">تاريخ بدء القراءة</string>
     <string name="finished_reading_date">تاريخ الانتهاء من القراءة</string>
@@ -683,7 +688,7 @@
     </plurals>
     <string name="category">الفئة</string>
     <string name="new_category">فئة جديدة</string>
-    <string name="no_chapters_to_delete">لا توجد أيُّ فصول للتحذف</string>
+    <string name="no_chapters_to_delete">لا توجد أيُّ فصول لتحذف</string>
     <string name="remove_all_downloads">أأحذف كلَّ التنزيلات؟</string>
     <string name="no_pages_found">لم يُعثر على أيِّ صفحات</string>
     <string name="add_x_to">أضف %1$s إلى…</string>
@@ -741,6 +746,7 @@
     <string name="changing_will_reset_reading_mode">تغيير هذا يعيد يصفِّر وضع القراءة لهذه السلسلة</string>
     <string name="change">تغيير</string>
     <string name="reading_mode">وضع القراءة</string>
+    <string name="crop_borders_webtoon">اقتصَّ الحدود (وِبتون)</string>
     <string name="crop_borders_paged">اقتصَّ الحدود (مُصَفَّح)</string>
     <string name="couldnt_download_low_space">لا توجد مساحة كافية لتحميل الفصول</string>
     <string name="amount_of_pages_to_preload">عدد الصفحات التي تُحمَّل بينما تقرأ. تحسِّن القيم الكبرى القراءة، ولكنها تستخدم ذاكرةً مؤقَّتةً أكثر وتزيد من استخدام الشبكة.</string>
@@ -894,7 +900,7 @@
     <string name="by_source_order">حسب ترتيب المصدر</string>
     <string name="not_bookmarked">لم يعلَّم</string>
     <string name="external_storage_download_notice">يتطلب TachiyomiJ2K الوصول إلى جميع الملفات لينزِّل الفصول. اضغط هنا ثم مكِّن «السماح بالوصول لإدارة جميع الملفات.»</string>
-    <string name="external_storage_permission_notice">يحتاج TachiyomiJ2K للوصول إلى كلِّ الملفَّات في أندرويد ١١، فبذلك ينزِّل الفصول ويحتاط ويقرأ السلاسل المنزَّلة.
+    <string name="external_storage_permission_notice">يحتاج TachiyomiJ2K للوصول إلى كلِّ الملفَّات في أندرويد 11، فبذلك ينزِّل الفصول ويحتاط ويقرأ السلاسل المنزَّلة.
 \n
 \nمكِّن «اسمح بإدارة كافة الملفات.» عندما تراها في الشاشة التالية</string>
     <string name="all_files_permission_required">إذن الوصول إلى الملفات مطلوب</string>
@@ -1074,7 +1080,7 @@
     <string name="tap_zones">مواضع اللمس</string>
     <string name="lavender">أرجواني</string>
     <string name="violet">بنفسجي</string>
-    <string name="long_strip_side_padding_5">٥٪</string>
+    <string name="webtoon_side_padding_5">٥٪</string>
     <string name="user_agent_string">سلسلة وكيل المستخدم المبدئية</string>
     <string name="loader_rar5_error">تنسيق RARv5 ليس مدعومًا</string>
     <string name="language_requires_app_restart">تتطلَّب بعض اللغات إعادة التشغيل لتظهر صحيحةً</string>
@@ -1167,4 +1173,6 @@
     <string name="pref_debug_info">معلومات التنقيح</string>
     <string name="label_background_activity">الأنشطة التي تعمل في الخلفية</string>
     <string name="share_cover">شارك الغلاف</string>
+    <string name="save_pages_separately">احفظ الصفحات في مجلدات مختلفة</string>
+    <string name="create_folders_by_manga_title">يُنشِئ ملفات حسب عنوان المانجا</string>
 </resources>
